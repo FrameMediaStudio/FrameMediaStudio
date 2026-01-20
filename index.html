@@ -9,11 +9,11 @@
   <link rel="icon" type="image/png" href="logo.png">
 
   <style>
-    /* ================= BASE STYLES ================= */
+    /* ================= BASE ================= */
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: #0f0f0f;
+      background: radial-gradient(circle at top, #151515, #0b0b0b);
       color: #ffffff;
       line-height: 1.6;
     }
@@ -29,14 +29,18 @@
       padding: 40px 20px;
     }
 
+    /* ================= HERO ================= */
     .hero {
       text-align: center;
-      padding: 80px 20px;
+      padding: 90px 20px;
+      animation: fadeUp 1s ease forwards;
     }
 
     .hero img {
       width: 160px;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 20px 40px rgba(79,209,197,0.2));
+      animation: float 4s ease-in-out infinite;
     }
 
     .hero p {
@@ -47,66 +51,132 @@
     .badge {
       display: inline-block;
       margin-top: 20px;
-      padding: 10px 20px;
+      padding: 10px 22px;
       border: 1px solid #4fd1c5;
       border-radius: 30px;
       font-size: 14px;
+      background: rgba(79,209,197,0.05);
     }
 
+    /* ================= SECTIONS ================= */
     .section {
-      margin-top: 80px;
+      margin-top: 90px;
+      animation: fadeUp 1s ease forwards;
     }
 
     .section h2 {
-      font-size: 32px;
-      margin-bottom: 20px;
+      font-size: 34px;
+      margin-bottom: 16px;
     }
 
+    .section p {
+      max-width: 750px;
+      opacity: 0.85;
+    }
+
+    /* ================= GRID / CARDS ================= */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 30px;
+      margin-top: 30px;
     }
 
     .card {
-      background: #161616;
-      padding: 25px;
-      border-radius: 12px;
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      background: linear-gradient(145deg, #171717, #101010);
+      padding: 30px;
+      border-radius: 16px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      transform-style: preserve-3d;
     }
 
     .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-    }
-
-    .card h3 {
-      margin-top: 0;
+      transform: translateY(-10px) rotateX(4deg);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
     }
 
     .video-link {
       display: block;
-      margin-top: 10px;
+      margin-top: 12px;
       font-size: 14px;
     }
 
-    .cta {
-      text-align: center;
-      margin-top: 100px;
-      padding: 60px 20px;
-      background: #161616;
+    /* ================= CONTACT FORM ================= */
+    .contact-form {
+      max-width: 650px;
+      margin: 80px auto 0;
+      background: linear-gradient(145deg, #171717, #101010);
+      padding: 45px;
       border-radius: 20px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
     }
 
-    .cta h2 {
+    .contact-form h2 {
+      text-align: center;
       margin-bottom: 10px;
     }
 
+    .contact-form p {
+      text-align: center;
+      opacity: 0.75;
+      margin-bottom: 30px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+      background: #0c0c0c;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      color: #fff;
+      font-size: 15px;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: #4fd1c5;
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .contact-form button {
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      border: none;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #0f0f0f;
+      background: linear-gradient(135deg, #4fd1c5, #38b2ac);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .contact-form button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(79,209,197,0.4);
+    }
+
+    .warning {
+      margin-top: 16px;
+      font-size: 13px;
+      opacity: 0.65;
+      text-align: center;
+    }
+
+    /* ================= FOOTER ================= */
     .footer {
       text-align: center;
-      padding: 30px;
+      padding: 40px;
       font-size: 14px;
       opacity: 0.6;
+      margin-top: 80px;
     }
 
     /* ================= ANIMATIONS ================= */
@@ -121,20 +191,10 @@
       }
     }
 
-    .hero,
-    .section,
-    .cta,
-    .footer {
-      opacity: 0;
-      animation: fadeUp 0.9s ease forwards;
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
-
-    .hero { animation-delay: 0.2s; }
-    .section:nth-of-type(1) { animation-delay: 0.4s; }
-    .section:nth-of-type(2) { animation-delay: 0.6s; }
-    .section:nth-of-type(3) { animation-delay: 0.8s; }
-    .cta { animation-delay: 1s; }
-    .footer { animation-delay: 1.2s; }
   </style>
 </head>
 <body>
@@ -143,22 +203,20 @@
   <div class="hero">
     <img src="logo.png" alt="FRAME Logo">
     <p>Video Editing & Social Media Management</p>
-    <div class="badge">
-      6 Years Editing • 5 Months SMM
-    </div>
+    <div class="badge">6 Years Editing • Social Media Growth</div>
   </div>
 
   <div class="container">
 
     <!-- ABOUT -->
     <div class="section">
-      <h2>About Me</h2>
+      <h2>About FRAME</h2>
       <p>
-        I’m a video editor and social media manager with over <strong>6 years of editing experience</strong>
-        and <strong>1–2 years helping creators improve reach, retention, and overall content performance</strong>.
+        FRAME helps creators and brands grow through <strong>high-retention video editing</strong>
+        and <strong>strategic social media optimization</strong>.
         <br><br>
-        With FRAME, creators focus on being the face — I handle everything behind the scenes:
-        strategy, editing, optimization, and growth.
+        You stay on camera. I handle everything behind the scenes — editing, pacing,
+        storytelling, and performance-focused decisions.
       </p>
     </div>
 
@@ -167,27 +225,16 @@
       <h2>What I Do</h2>
       <div class="grid">
         <div class="card">
-          <h3>Video Editing</h3>
-          <p>
-            High-retention edits, clean motion graphics, smooth transitions,
-            subtitles, and platform-optimized formats.
-          </p>
+          <h3>High-Retention Editing</h3>
+          <p>Fast pacing, clean transitions, subtitles, motion graphics, and platform-optimized formats.</p>
         </div>
-
         <div class="card">
-          <h3>Social Media Management</h3>
-          <p>
-            Content analysis, hooks, titles, hashtags, posting strategy,
-            and improving views across Shorts, Reels, and long-form.
-          </p>
+          <h3>Social Media Strategy</h3>
+          <p>Hooks, captions, hashtags, posting strategy, and maximizing reach across platforms.</p>
         </div>
-
         <div class="card">
           <h3>Creative Direction</h3>
-          <p>
-            Thumbnails, editing style guidance, repeatable formats,
-            and helping creators build a recognizable brand.
-          </p>
+          <p>Consistent style, branding, thumbnails, and repeatable content systems.</p>
         </div>
       </div>
     </div>
@@ -197,36 +244,44 @@
       <h2>Recent Work</h2>
       <div class="grid">
         <div class="card">
-          <h3>FRAME Promo Edit</h3>
-          <p>A short promotional video showcasing how strong editing improves reach.</p>
-          <a class="video-link" target="_blank"
-             href="https://www.linkedin.com/posts/framestudiomedia_videoediting-socialmediamanagement-contentcreators-activity-7418436814966996992-wnhr">
+          <h3>FRAME Promo</h3>
+          <p>Short-form promotional edit demonstrating how editing impacts perception & reach.</p>
+          <a class="video-link" target="_blank" href="https://www.linkedin.com/posts/framestudiomedia_videoediting-socialmediamanagement-contentcreators-activity-7418436814966996992-wnhr">
             ▶ Watch on LinkedIn
           </a>
         </div>
-
         <div class="card">
-          <h3>Sultan Photos — Client Edit</h3>
-          <p>Client work focused on clean pacing and professional presentation.</p>
-          <a class="video-link" target="_blank"
-             href="https://www.linkedin.com/posts/framestudiomedia_edit-premierepro-aftereffects-activity-7390788304578912256-N4Ug">
+          <h3>Sultan Photos — Client</h3>
+          <p>Professional client edit focused on clarity, pacing, and clean presentation.</p>
+          <a class="video-link" target="_blank" href="https://www.linkedin.com/posts/framestudiomedia_edit-premierepro-aftereffects-activity-7390788304578912256-N4Ug">
             ▶ Watch on LinkedIn
           </a>
         </div>
       </div>
     </div>
 
-    <!-- CTA -->
-    <div class="cta">
+    <!-- CONTACT -->
+    <div class="contact-form">
       <h2>Work With FRAME</h2>
-      <p>Better edits. Better reach. Better results.</p>
-      <p>📩 <strong>mereattar.2641@gmail.com</strong></p>
+      <p>Describe your project and I’ll get back to you.</p>
+
+      <form action="mailto:mereattar.2641@gmail.com" method="post" enctype="text/plain">
+        <input type="text" name="Name" placeholder="Your Name" required>
+        <input type="email" name="Email" placeholder="Your Email" required>
+        <textarea name="Message" placeholder="Tell me about your project..." required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+
+      <div class="warning">
+        ⚠️ If this form doesn’t open your email app, please manually send a message to  
+        <strong>mereattar.2641@gmail.com</strong>
+      </div>
     </div>
 
   </div>
 
   <div class="footer">
-    © FRAME Portfolio 2026
+    © FRAME Portfolio — 2026
   </div>
 
 </body>
