@@ -1,254 +1,360 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FRAME — Creative Services</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FRAME — Creative Portfolio</title>
 
-<link rel="icon" type="image/png" href="logo.png">
+  <style>
+    :root {
+      --bg: #0f0f12;
+      --card: #17171c;
+      --text: #e6e6eb;
+      --muted: #9a9aa3;
+      --accent1: #ff4d4d;
+      --accent2: #ff8a8a;
+      --accent3: #7aa2ff;
+    }
 
-<style>
-:root {
-  --bg:#0f0f0f;
-  --card:#161616;
-  --accent:#e63946;
-  --accent2:#ff6b6b;
-  --text:#ffffff;
-  --muted:#b5b5b5;
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Inter, system-ui, sans-serif;
+    }
 
-* { box-sizing:border-box; }
+    body {
+      background: radial-gradient(circle at top, #15151b, var(--bg));
+      color: var(--text);
+      min-height: 100vh;
+    }
 
-body {
-  margin:0;
-  font-family: Arial, Helvetica, sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.6;
-}
+    section {
+      padding: 80px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
 
-.container {
-  max-width:1150px;
-  margin:auto;
-  padding:50px 20px;
-}
+    h1, h2, h3 {
+      line-height: 1.2;
+    }
 
-/* HERO */
-.hero {
-  text-align:center;
-  padding:90px 20px;
-  animation:fadeUp 1s ease forwards;
-}
+    .gradient {
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-.hero img {
-  width:150px;
-  margin-bottom:20px;
-}
+    .hero {
+      text-align: center;
+      padding-top: 100px;
+    }
 
-.hero h1 {
-  font-size:52px;
-  margin:0;
-  background:linear-gradient(90deg,var(--accent),var(--accent2));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 800;
+    }
 
-.hero p {
-  font-size:18px;
-  opacity:.85;
-}
+    .hero p {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
 
-.badge {
-  display:inline-block;
-  margin-top:20px;
-  padding:10px 22px;
-  border-radius:30px;
-  border:1px solid var(--accent);
-  font-size:14px;
-}
+    .tabs {
+      margin-top: 40px;
+    }
 
-/* TABS */
-.tabs {
-  display:flex;
-  justify-content:center;
-  gap:15px;
-  margin-top:60px;
-}
+    .tab-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
 
-.tab {
-  padding:12px 26px;
-  border-radius:30px;
-  background:#1b1b1b;
-  cursor:pointer;
-  transition:.3s;
-}
+    .tab-btn {
+      background: transparent;
+      border: 1px solid #2a2a33;
+      color: var(--text);
+      padding: 12px 20px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
-.tab.active {
-  background:linear-gradient(90deg,var(--accent),var(--accent2));
-}
+    .tab-btn.active {
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      color: #000;
+      font-weight: 700;
+      border: none;
+    }
 
-.section {
-  margin-top:80px;
-  animation:fadeUp .9s ease forwards;
-}
+    .tab-content {
+      display: none;
+      background: var(--card);
+      padding: 35px;
+      border-radius: 20px;
+      animation: fadeUp 0.6s ease;
+    }
 
-/* CARDS */
-.grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:30px;
-}
+    .tab-content.active {
+      display: block;
+    }
 
-.card {
-  background:var(--card);
-  padding:28px;
-  border-radius:16px;
-  transform:translateY(0);
-  transition:.4s ease;
-}
+    .tab-content p {
+      color: var(--muted);
+      margin-top: 10px;
+      line-height: 1.6;
+    }
 
-.card:hover {
-  transform:translateY(-8px) scale(1.01);
-  box-shadow:0 20px 40px rgba(0,0,0,.4);
-}
+    .testimonials h2 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
 
-/* PRICING */
-.price {
-  font-size:34px;
-  font-weight:bold;
-  color:var(--accent2);
-}
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
 
-/* REVIEWS */
-.review {
-  font-style:italic;
-  color:var(--muted);
-}
+    .testimonial {
+      background: var(--card);
+      padding: 25px;
+      border-radius: 18px;
+      font-size: 0.95rem;
+    }
 
-/* CTA */
-.cta {
-  margin-top:100px;
-  padding:70px 25px;
-  background:linear-gradient(135deg,#1a1a1a,#101010);
-  border-radius:22px;
-  text-align:center;
-}
+    .testimonial strong {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+    }
 
-.cta h2 {
-  margin-bottom:10px;
-}
+    .testimonial span {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
 
-.warning {
-  font-size:13px;
-  opacity:.6;
-  margin-top:10px;
-}
+    .pricing h2 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
 
-/* FOOTER */
-.footer {
-  text-align:center;
-  padding:30px;
-  font-size:14px;
-  opacity:.6;
-}
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
 
-/* ANIMATIONS */
-@keyframes fadeUp {
-  from {opacity:0; transform:translateY(30px);}
-  to {opacity:1; transform:translateY(0);}
-}
-</style>
+    .price-card {
+      background: var(--card);
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .price-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .price-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 2rem;
+      font-weight: 800;
+      margin: 15px 0;
+    }
+
+    .price-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .cta {
+      text-align: center;
+    }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 14px 30px;
+      border-radius: 14px;
+      background: linear-gradient(90deg, var(--accent3), var(--accent2));
+      color: #000;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .cta small {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- HERO -->
-<div class="hero">
-  <img src="logo.png" alt="FRAME Logo">
-  <h1>FRAME</h1>
-  <p>Video Editing • Graphic Design • Social Media Management</p>
-  <div class="badge">6 Years Editing • 1–2 Years SMM</div>
-</div>
-
-<!-- TABS -->
-<div class="tabs">
-  <div class="tab active">Video Editor</div>
-  <div class="tab">Graphic Designer</div>
-  <div class="tab">Social Media Manager</div>
-</div>
-
-<div class="container">
-
-<!-- EXPERIENCE -->
-<div class="section">
-  <h2>Experience</h2>
+<section class="hero">
+  <h1>Turning ideas into <span class="gradient">high-impact content</span></h1>
   <p>
-    I’ve been editing for over <strong>6 years</strong>, working on short-form,
-    long-form, promos, and branded content.  
-    Over the last <strong>1–2 years</strong>, I expanded into social media management —
-    helping creators improve retention, consistency, and reach.
-    <br><br>
-    My workflow focuses on pacing, clarity, and making content feel effortless
-    to watch — so audiences stay longer and engage more.
+    Every editor starts with a timeline.<br>
+    <em>The difference is what you do after you press play.</em>
   </p>
-</div>
+</section>
 
-<!-- PRICING -->
-<div class="section">
-  <h2>Starting Prices</h2>
-  <div class="grid">
-    <div class="card">
+<section class="tabs">
+  <div class="tab-buttons">
+    <button class="tab-btn active" onclick="openTab('video')">Video Editor</button>
+    <button class="tab-btn" onclick="openTab('design')">Graphic Designer</button>
+    <button class="tab-btn" onclick="openTab('social')">Social Media Manager</button>
+  </div>
+
+  <div id="video" class="tab-content active">
+    <h2 class="gradient">Video Editing</h2>
+    <p>
+      <strong>6+ years of hands-on editing experience</strong> working with short-form,
+      long-form, promotional content, and branded videos.
+    </p>
+    <p>
+      My focus is retention-first editing: clean pacing, intentional cuts,
+      strong openings, and smooth flow that keeps viewers watching longer.
+      Every edit is optimized for the platform it’s published on.
+    </p>
+  </div>
+
+  <div id="design" class="tab-content">
+    <h2 class="gradient">Graphic Design</h2>
+    <p>
+      Thumbnails, visuals, and layouts designed with one goal in mind:
+      <strong>getting attention without feeling clickbait.</strong>
+    </p>
+    <p>
+      I focus on contrast, hierarchy, and clarity so the message is understood
+      instantly — whether it’s a thumbnail, post, or brand visual.
+    </p>
+  </div>
+
+  <div id="social" class="tab-content">
+    <h2 class="gradient">Social Media Management</h2>
+    <p>
+      I help creators build consistency and structure without burning out.
+      From content planning to posting flow and optimization.
+    </p>
+    <p>
+      The goal isn’t just more posts — it’s smarter content that performs
+      better over time.
+    </p>
+  </div>
+</section>
+
+<section class="testimonials">
+  <h2 class="gradient">What clients say</h2>
+  <div class="testimonial-grid">
+
+    <div class="testimonial">
+      “Working with FRAME made everything easier. I didn’t have to over-explain —
+      the edits just made sense.”
+      <strong>— Ahmed K.</strong>
+      <span>Content Creator</span>
+    </div>
+
+    <div class="testimonial">
+      “The pacing and structure improved instantly. My videos finally felt
+      professional.”
+      <strong>— Daniel R.</strong>
+      <span>YouTuber</span>
+    </div>
+
+    <div class="testimonial">
+      “Very clean work and fast responses. Exactly what we needed.”
+      <strong>— Sultan Photos</strong>
+      <span>Photography Brand</span>
+    </div>
+
+    <div class="testimonial">
+      “Retention went up and the content looked more polished without losing
+      personality.”
+      <strong>— Omar S.</strong>
+      <span>Short-form Creator</span>
+    </div>
+
+  </div>
+</section>
+
+<section class="pricing">
+  <h2 class="gradient">Simple pricing</h2>
+  <div class="pricing-grid">
+
+    <div class="price-card">
       <h3>Starter</h3>
-      <p class="price">$80 / month</p>
-      <p>Up to 6 short-form edits. Clean cuts, subtitles, optimized formats.</p>
+      <div class="price">$ —</div>
+      <p>
+        Ideal for creators testing consistency<br>
+        • Short-form edits<br>
+        • Clean cuts & pacing
+      </p>
     </div>
-    <div class="card">
+
+    <div class="price-card">
       <h3>Growth</h3>
-      <p class="price">$150 / month</p>
-      <p>Up to 15 edits. Strong hooks, motion, pacing, priority delivery.</p>
+      <div class="price">$ —</div>
+      <p>
+        Built for steady posting<br>
+        • Strong hooks<br>
+        • Retention-focused editing
+      </p>
     </div>
-    <div class="card">
-      <h3>Custom</h3>
-      <p class="price">Custom</p>
-      <p>Long-form, ads, promos, or ongoing content systems.</p>
+
+    <div class="price-card">
+      <h3>Pro</h3>
+      <div class="price">$ —</div>
+      <p>
+        For serious growth<br>
+        • Full editing workflow<br>
+        • Strategy & optimization
+      </p>
     </div>
+
   </div>
-</div>
+</section>
 
-<!-- REVIEWS -->
-<div class="section">
-  <h2>What Clients Say</h2>
-  <div class="grid">
-    <div class="card review">
-      “The edits instantly felt more professional. Watch time went up without changing my content.”
-      <br><br>— Alex M.
-    </div>
-    <div class="card review">
-      “Fast delivery and really clean pacing. I didn’t have to explain much.”
-      <br><br>— Daniel R.
-    </div>
-    <div class="card review">
-      “FRAME made my content look serious and consistent.”
-      <br><br>— Sultan Photos
-    </div>
-  </div>
-</div>
+<section class="cta">
+  <h2>Ready to upgrade your content?</h2>
+  <p>Let’s build edits that people actually watch.</p>
+  <a href="mailto:mereattar.2641@gmail.com">Work With FRAME</a>
+  <small>If the button doesn’t work, please email manually.</small>
+</section>
 
-<!-- CTA -->
-<div class="cta">
-  <h2>Work With FRAME</h2>
-  <p>Better edits. Better reach. Better results.</p>
-  <p><strong>📩 mereattar.2641@gmail.com</strong></p>
-  <div class="warning">
-    If the email does not open automatically, please send a message manually.
-  </div>
-</div>
+<footer>
+  © 2026 — FRAME Portfolio
+</footer>
 
-</div>
-
-<div class="footer">
-  © FRAME Portfolio 2026
-</div>
+<script>
+function openTab(tabId) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
 
 </body>
 </html>
