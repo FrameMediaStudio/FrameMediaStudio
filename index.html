@@ -1,331 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FRAME — Creative Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRAME — Creative Services</title>
 
-  <style>
-    :root {
-      --bg: #0f0f12;
-      --card: #17171c;
-      --text: #e6e6eb;
-      --muted: #9a9aa3;
-      --accent1: #ff4d4d;
-      --accent2: #ff8a8a;
-      --accent3: #7aa2ff;
-    }
+<link rel="icon" type="image/png" href="logo.png">
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Inter, system-ui, sans-serif;
-    }
+<style>
+:root {
+  --bg:#0f0f0f;
+  --card:#161616;
+  --accent:#e63946;
+  --accent2:#ff6b6b;
+  --text:#ffffff;
+  --muted:#b5b5b5;
+}
 
-    body {
-      background: radial-gradient(circle at top, #15151b, var(--bg));
-      color: var(--text);
-      min-height: 100vh;
-    }
+* { box-sizing:border-box; }
 
-    section {
-      padding: 80px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
+body {
+  margin:0;
+  font-family: Arial, Helvetica, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+}
 
-    h1, h2, h3 {
-      line-height: 1.2;
-    }
+.container {
+  max-width:1150px;
+  margin:auto;
+  padding:50px 20px;
+}
 
-    .gradient {
-      background: linear-gradient(90deg, var(--accent1), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+/* HERO */
+.hero {
+  text-align:center;
+  padding:90px 20px;
+  animation:fadeUp 1s ease forwards;
+}
 
-    /* ---------- HERO ---------- */
-    .hero {
-      text-align: center;
-      padding-top: 100px;
-    }
+.hero img {
+  width:150px;
+  margin-bottom:20px;
+}
 
-    .hero h1 {
-      font-size: clamp(2.4rem, 5vw, 3.6rem);
-      font-weight: 800;
-    }
+.hero h1 {
+  font-size:52px;
+  margin:0;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
 
-    .hero p {
-      margin-top: 20px;
-      color: var(--muted);
-      font-size: 1.1rem;
-    }
+.hero p {
+  font-size:18px;
+  opacity:.85;
+}
 
-    /* ---------- TABS ---------- */
-    .tabs {
-      margin-top: 40px;
-    }
+.badge {
+  display:inline-block;
+  margin-top:20px;
+  padding:10px 22px;
+  border-radius:30px;
+  border:1px solid var(--accent);
+  font-size:14px;
+}
 
-    .tab-buttons {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      margin-bottom: 30px;
-      flex-wrap: wrap;
-    }
+/* TABS */
+.tabs {
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-top:60px;
+}
 
-    .tab-btn {
-      background: transparent;
-      border: 1px solid #2a2a33;
-      color: var(--text);
-      padding: 12px 20px;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+.tab {
+  padding:12px 26px;
+  border-radius:30px;
+  background:#1b1b1b;
+  cursor:pointer;
+  transition:.3s;
+}
 
-    .tab-btn.active {
-      background: linear-gradient(90deg, var(--accent1), var(--accent2));
-      color: #000;
-      font-weight: 700;
-      border: none;
-    }
+.tab.active {
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+}
 
-    .tab-content {
-      display: none;
-      background: var(--card);
-      padding: 35px;
-      border-radius: 20px;
-      animation: fadeUp 0.6s ease;
-    }
+.section {
+  margin-top:80px;
+  animation:fadeUp .9s ease forwards;
+}
 
-    .tab-content.active {
-      display: block;
-    }
+/* CARDS */
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
 
-    .tab-content p {
-      color: var(--muted);
-      margin-top: 10px;
-      line-height: 1.6;
-    }
+.card {
+  background:var(--card);
+  padding:28px;
+  border-radius:16px;
+  transform:translateY(0);
+  transition:.4s ease;
+}
 
-    /* ---------- TESTIMONIALS ---------- */
-    .testimonials h2 {
-      text-align: center;
-      margin-bottom: 40px;
-    }
+.card:hover {
+  transform:translateY(-8px) scale(1.01);
+  box-shadow:0 20px 40px rgba(0,0,0,.4);
+}
 
-    .testimonial-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
-    }
+/* PRICING */
+.price {
+  font-size:34px;
+  font-weight:bold;
+  color:var(--accent2);
+}
 
-    .testimonial {
-      background: var(--card);
-      padding: 25px;
-      border-radius: 18px;
-      font-size: 0.95rem;
-    }
+/* REVIEWS */
+.review {
+  font-style:italic;
+  color:var(--muted);
+}
 
-    .testimonial strong {
-      display: block;
-      margin-top: 15px;
-      font-weight: 600;
-    }
+/* CTA */
+.cta {
+  margin-top:100px;
+  padding:70px 25px;
+  background:linear-gradient(135deg,#1a1a1a,#101010);
+  border-radius:22px;
+  text-align:center;
+}
 
-    .testimonial span {
-      color: var(--muted);
-      font-size: 0.85rem;
-    }
+.cta h2 {
+  margin-bottom:10px;
+}
 
-    /* ---------- PRICING ---------- */
-    .pricing h2 {
-      text-align: center;
-      margin-bottom: 40px;
-    }
+.warning {
+  font-size:13px;
+  opacity:.6;
+  margin-top:10px;
+}
 
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
-    }
+/* FOOTER */
+.footer {
+  text-align:center;
+  padding:30px;
+  font-size:14px;
+  opacity:.6;
+}
 
-    .price-card {
-      background: var(--card);
-      padding: 30px;
-      border-radius: 20px;
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
-
-    .price-card:hover {
-      transform: translateY(-6px);
-    }
-
-    .price-card h3 {
-      margin-bottom: 10px;
-    }
-
-    .price {
-      font-size: 2rem;
-      font-weight: 800;
-      margin: 15px 0;
-    }
-
-    .price-card p {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    /* ---------- CTA ---------- */
-    .cta {
-      text-align: center;
-    }
-
-    .cta a {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 14px 30px;
-      border-radius: 14px;
-      background: linear-gradient(90deg, var(--accent3), var(--accent2));
-      color: #000;
-      font-weight: 800;
-      text-decoration: none;
-    }
-
-    .cta small {
-      display: block;
-      margin-top: 10px;
-      color: var(--muted);
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: var(--muted);
-      font-size: 0.85rem;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from {opacity:0; transform:translateY(30px);}
+  to {opacity:1; transform:translateY(0);}
+}
+</style>
 </head>
 
 <body>
 
-  <!-- HERO -->
-  <section class="hero">
-    <h1>Turning ideas into <span class="gradient">high-impact content</span></h1>
-    <p>
-      Every editor starts with a timeline.<br>
-      <em>The difference is what you do after you press play.</em>
-    </p>
-  </section>
+<!-- HERO -->
+<div class="hero">
+  <img src="logo.png" alt="FRAME Logo">
+  <h1>FRAME</h1>
+  <p>Video Editing • Graphic Design • Social Media Management</p>
+  <div class="badge">6 Years Editing • 1–2 Years SMM</div>
+</div>
 
-  <!-- SERVICES -->
-  <section class="tabs">
-    <div class="tab-buttons">
-      <button class="tab-btn active" onclick="openTab('video')">Video Editor</button>
-      <button class="tab-btn" onclick="openTab('design')">Graphic Designer</button>
-      <button class="tab-btn" onclick="openTab('social')">Social Media Manager</button>
+<!-- TABS -->
+<div class="tabs">
+  <div class="tab active">Video Editor</div>
+  <div class="tab">Graphic Designer</div>
+  <div class="tab">Social Media Manager</div>
+</div>
+
+<div class="container">
+
+<!-- EXPERIENCE -->
+<div class="section">
+  <h2>Experience</h2>
+  <p>
+    I’ve been editing for over <strong>6 years</strong>, working on short-form,
+    long-form, promos, and branded content.  
+    Over the last <strong>1–2 years</strong>, I expanded into social media management —
+    helping creators improve retention, consistency, and reach.
+    <br><br>
+    My workflow focuses on pacing, clarity, and making content feel effortless
+    to watch — so audiences stay longer and engage more.
+  </p>
+</div>
+
+<!-- PRICING -->
+<div class="section">
+  <h2>Starting Prices</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Starter</h3>
+      <p class="price">$80 / month</p>
+      <p>Up to 6 short-form edits. Clean cuts, subtitles, optimized formats.</p>
     </div>
-
-    <div id="video" class="tab-content active">
-      <h2 class="gradient">Video Editing</h2>
-      <p><strong>6+ years of experience</strong> crafting edits that boost retention, pacing, and clarity.</p>
-      <p>Optimized for YouTube, Shorts, Reels, ads, and personal brands.</p>
+    <div class="card">
+      <h3>Growth</h3>
+      <p class="price">$150 / month</p>
+      <p>Up to 15 edits. Strong hooks, motion, pacing, priority delivery.</p>
     </div>
-
-    <div id="design" class="tab-content">
-      <h2 class="gradient">Graphic Design</h2>
-      <p>Scroll-stopping thumbnails, clean layouts, and strong visual hierarchy.</p>
-      <p>Designed to support content performance — not just look good.</p>
+    <div class="card">
+      <h3>Custom</h3>
+      <p class="price">Custom</p>
+      <p>Long-form, ads, promos, or ongoing content systems.</p>
     </div>
+  </div>
+</div>
 
-    <div id="social" class="tab-content">
-      <h2 class="gradient">Social Media Management</h2>
-      <p>Content strategy, posting flow, hooks, and optimization.</p>
-      <p>Helping creators grow without burnout or guesswork.</p>
+<!-- REVIEWS -->
+<div class="section">
+  <h2>What Clients Say</h2>
+  <div class="grid">
+    <div class="card review">
+      “The edits instantly felt more professional. Watch time went up without changing my content.”
+      <br><br>— Alex M.
     </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section class="testimonials">
-    <h2 class="gradient">What clients say</h2>
-    <div class="testimonial-grid">
-      <div class="testimonial">
-        “Our videos instantly felt more professional. Retention improved and the edits matched our brand perfectly.”
-        <strong>— Ahmed K.</strong>
-        <span>Content Creator</span>
-      </div>
-
-      <div class="testimonial">
-        “FRAME understood exactly what we needed. Clean edits, fast delivery, and great communication.”
-        <strong>— Sultan Photos</strong>
-        <span>Photography Brand</span>
-      </div>
-
-      <div class="testimonial">
-        “The difference after working together was huge. Better pacing, better hooks, better results.”
-        <strong>— Daniel R.</strong>
-        <span>YouTuber</span>
-      </div>
+    <div class="card review">
+      “Fast delivery and really clean pacing. I didn’t have to explain much.”
+      <br><br>— Daniel R.
     </div>
-  </section>
-
-  <!-- PRICING -->
-  <section class="pricing">
-    <h2 class="gradient">Simple pricing</h2>
-    <div class="pricing-grid">
-
-      <div class="price-card">
-        <h3>Starter</h3>
-        <div class="price">$ —</div>
-        <p>Perfect for creators starting out</p>
-        <p>• Short-form edits<br>• Clean cuts & pacing</p>
-      </div>
-
-      <div class="price-card">
-        <h3>Growth</h3>
-        <div class="price">$ —</div>
-        <p>For consistent posting & growth</p>
-        <p>• Advanced edits<br>• Hooks & retention</p>
-      </div>
-
-      <div class="price-card">
-        <h3>Pro</h3>
-        <div class="price">$ —</div>
-        <p>High-end content & management</p>
-        <p>• Full editing<br>• Strategy & optimization</p>
-      </div>
-
+    <div class="card review">
+      “FRAME made my content look serious and consistent.”
+      <br><br>— Sultan Photos
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- CTA -->
-  <section class="cta">
-    <h2>Ready to upgrade your content?</h2>
-    <p>Let’s build edits that actually perform.</p>
-    <a href="mailto:mereattar.2641@gmail.com">Work With FRAME</a>
-    <small>If the button doesn’t work, please email manually.</small>
-  </section>
+<!-- CTA -->
+<div class="cta">
+  <h2>Work With FRAME</h2>
+  <p>Better edits. Better reach. Better results.</p>
+  <p><strong>📩 mereattar.2641@gmail.com</strong></p>
+  <div class="warning">
+    If the email does not open automatically, please send a message manually.
+  </div>
+</div>
 
-  <footer>
-    © 2026 — FRAME Portfolio
-  </footer>
+</div>
 
-  <script>
-    function openTab(tabId) {
-      document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById(tabId).classList.add('active');
-      event.target.classList.add('active');
-    }
-  </script>
+<div class="footer">
+  © FRAME Portfolio 2026
+</div>
 
 </body>
 </html>
