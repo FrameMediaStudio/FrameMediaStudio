@@ -1,334 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FRAME — Creative Portfolio</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FRAME — Creative Portfolio</title>
 
-  <style>
-    :root {
-      --bg: #0f0f12;
-      --card: #17171c;
-      --text: #e6e6eb;
-      --muted: #9a9aa3;
-      --accent1: #ff4d4d;
-      --accent2: #ff8a8a;
-      --accent3: #7aa2ff;
-    }
+<style>
+:root {
+  --bg:#0f0f12;
+  --card:rgba(23,23,28,0.75);
+  --border:rgba(255,255,255,0.08);
+  --text:#e6e6eb;
+  --muted:#9a9aa3;
+  --accent1:#ff4d4d;
+  --accent2:#ff8a8a;
+  --accent3:#7aa2ff;
+}
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Inter, system-ui, sans-serif;
-    }
+* {
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Inter,system-ui,sans-serif;
+}
 
-    body {
-      background: radial-gradient(circle at top, #15151b, var(--bg));
-      color: var(--text);
-      min-height: 100vh;
-    }
+body {
+  background:radial-gradient(circle at top,#15151b,var(--bg));
+  color:var(--text);
+}
 
-    section {
-      padding: 80px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
+section {
+  padding:80px 20px;
+  max-width:1100px;
+  margin:auto;
+}
 
-    h1, h2, h3 {
-      line-height: 1.2;
-    }
+.gradient {
+  background:linear-gradient(90deg,var(--accent1),var(--accent2));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
 
-    .gradient {
-      background: linear-gradient(90deg, var(--accent1), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+.hero {
+  text-align:center;
+  padding-top:100px;
+}
 
-    .hero {
-      text-align: center;
-      padding-top: 100px;
-    }
+.hero h1 {
+  font-size:clamp(2.4rem,5vw,3.6rem);
+  font-weight:800;
+}
 
-    .hero h1 {
-      font-size: clamp(2.4rem, 5vw, 3.6rem);
-      font-weight: 800;
-    }
+.hero p {
+  margin-top:20px;
+  color:var(--muted);
+  font-size:1.1rem;
+}
 
-    .hero p {
-      margin-top: 20px;
-      color: var(--muted);
-      font-size: 1.1rem;
-    }
+.tab-buttons {
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin-bottom:30px;
+}
 
-    .tabs {
-      margin-top: 40px;
-    }
+.tab-btn {
+  padding:12px 22px;
+  border-radius:14px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid var(--border);
+  color:var(--text);
+  cursor:pointer;
+  backdrop-filter:blur(10px);
+  transition:.3s;
+}
 
-    .tab-buttons {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      margin-bottom: 30px;
-      flex-wrap: wrap;
-    }
+.tab-btn.active {
+  background:linear-gradient(90deg,var(--accent1),var(--accent2));
+  color:#000;
+  border:none;
+  font-weight:700;
+}
 
-    .tab-btn {
-      background: transparent;
-      border: 1px solid #2a2a33;
-      color: var(--text);
-      padding: 12px 20px;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+.tab-content {
+  display:none;
+  background:var(--card);
+  backdrop-filter:blur(18px);
+  border:1px solid var(--border);
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.06);
+  padding:40px;
+  border-radius:22px;
+  animation:fadeUp .5s ease;
+}
 
-    .tab-btn.active {
-      background: linear-gradient(90deg, var(--accent1), var(--accent2));
-      color: #000;
-      font-weight: 700;
-      border: none;
-    }
+.tab-content.active { display:block; }
 
-    .tab-content {
-      display: none;
-      background: var(--card);
-      padding: 35px;
-      border-radius: 20px;
-      animation: fadeUp 0.6s ease;
-    }
+.tab-content p {
+  color:var(--muted);
+  margin-top:14px;
+  line-height:1.7;
+}
 
-    .tab-content.active {
-      display: block;
-    }
+.testimonial-grid,
+.pricing-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:24px;
+}
 
-    .tab-content p {
-      color: var(--muted);
-      margin-top: 10px;
-      line-height: 1.6;
-    }
+.testimonial,
+.price-card {
+  background:var(--card);
+  backdrop-filter:blur(16px);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:28px;
+  box-shadow:
+    0 18px 35px rgba(0,0,0,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+}
 
-    .testimonials h2 {
-      text-align: center;
-      margin-bottom: 40px;
-    }
+.price {
+  font-size:2rem;
+  font-weight:800;
+  margin:12px 0;
+}
 
-    .testimonial-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
-    }
+.cta {
+  text-align:center;
+}
 
-    .testimonial {
-      background: var(--card);
-      padding: 25px;
-      border-radius: 18px;
-      font-size: 0.95rem;
-    }
+.cta a {
+  margin-top:20px;
+  display:inline-block;
+  padding:14px 30px;
+  border-radius:16px;
+  background:linear-gradient(90deg,var(--accent3),var(--accent2));
+  color:#000;
+  font-weight:800;
+  text-decoration:none;
+}
 
-    .testimonial strong {
-      display: block;
-      margin-top: 15px;
-      font-weight: 600;
-    }
+footer {
+  text-align:center;
+  padding:30px;
+  color:var(--muted);
+  font-size:.85rem;
+}
 
-    .testimonial span {
-      color: var(--muted);
-      font-size: 0.85rem;
-    }
-
-    .pricing h2 {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
-    }
-
-    .price-card {
-      background: var(--card);
-      padding: 30px;
-      border-radius: 20px;
-      text-align: center;
-    }
-
-    .price {
-      font-size: 2rem;
-      font-weight: 800;
-      margin: 15px 0;
-    }
-
-    .price-card p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-
-    .cta {
-      text-align: center;
-    }
-
-    .cta a {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 14px 30px;
-      border-radius: 14px;
-      background: linear-gradient(90deg, var(--accent3), var(--accent2));
-      color: #000;
-      font-weight: 800;
-      text-decoration: none;
-    }
-
-    .cta small {
-      display: block;
-      margin-top: 10px;
-      color: var(--muted);
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: var(--muted);
-      font-size: 0.85rem;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+@keyframes fadeUp {
+  from {opacity:0;transform:translateY(18px)}
+  to {opacity:1;transform:translateY(0)}
+}
+</style>
 </head>
 
 <body>
 
 <section class="hero">
-  <h1>Turning ideas into <span class="gradient">high-impact content</span></h1>
-  <p>
-    Every editor starts with a timeline.<br>
-    <em>The difference is what you do after you press play.</em>
-  </p>
+<h1>Turning ideas into <span class="gradient">high-impact content</span></h1>
+<p>Every editor starts with a timeline.<br><em>The difference is what you do after you press play.</em></p>
 </section>
 
-<section class="tabs">
-  <div class="tab-buttons">
-    <button class="tab-btn active" onclick="openTab('video', this)">Video Editor</button>
-    <button class="tab-btn" onclick="openTab('design', this)">Graphic Designer</button>
-  </div>
+<section>
+<div class="tab-buttons">
+<button class="tab-btn active" onclick="openTab('video',this)">Video Editor</button>
+<button class="tab-btn" onclick="openTab('design',this)">Graphic Designer</button>
+</div>
 
-  <div id="video" class="tab-content active">
-    <h2 class="gradient">Video Editing</h2>
-    <p><strong>2.5+ years of hands-on editing experience</strong> across short-form, long-form, promos, and branded content.</p>
-    <p>Retention-first edits with strong hooks, clean pacing, and platform-specific optimization.</p>
-  </div>
+<div id="video" class="tab-content active">
+<h2 class="gradient">Video Editing</h2>
+<p><strong>2.5+ years of hands-on editing experience</strong> working with short-form, reels, promos, and long-form content.</p>
+<p>I focus on clean pacing, strong hooks, and edits that keep people watching — not overdone effects.</p>
+<p>Tools: Premiere Pro, After Effects, sound design, motion graphics, platform-optimized exports.</p>
+</div>
 
-  <div id="design" class="tab-content">
-    <h2 class="gradient">Graphic Design</h2>
-    <p><strong>Performance-driven graphic design</strong> focused on clarity, branding, and visual hierarchy.</p>
-    <p>I design thumbnails, social posts, and brand visuals that are clean, readable, and made to stand out in crowded feeds.</p>
-    <p>Every design has a purpose — to attract attention, communicate fast, and support your content or brand goals.</p>
-  </div>
+<div id="design" class="tab-content">
+<h2 class="gradient">Graphic Design</h2>
+<p>I design thumbnails, social visuals, and branding assets built for clarity and clicks.</p>
+<p>Every design is made to support the content — readable at small sizes, consistent, and performance-focused.</p>
+<p>Best for creators who want visuals that look professional without feeling generic.</p>
+</div>
 </section>
 
-<section class="testimonials">
-  <h2 class="gradient">What clients say</h2>
-  <div class="testimonial-grid" id="testimonialGrid"></div>
-</section>
-
-<section class="pricing">
-  <h2 class="gradient">Simple pricing</h2>
-  <div class="pricing-grid">
-    <div class="price-card">
-      <h3>Starter</h3>
-      <div class="price">$25</div>
-      <p id="starterDesc"></p>
-    </div>
-
-    <div class="price-card">
-      <h3>Growth</h3>
-      <div class="price">$75</div>
-      <p id="growthDesc"></p>
-    </div>
-
-    <div class="price-card">
-      <h3>Pro</h3>
-      <div class="price">$150</div>
-      <p id="proDesc"></p>
-    </div>
-  </div>
+<section>
+<h2 class="gradient" style="text-align:center;margin-bottom:40px;">Simple pricing</h2>
+<div class="pricing-grid">
+<div class="price-card">
+<h3>Starter</h3>
+<div class="price">$25</div>
+<p>Clean editing or design<br>Clear structure<br>Fast turnaround</p>
+</div>
+<div class="price-card">
+<h3>Growth</h3>
+<div class="price">$75</div>
+<p>Stronger hooks & polish<br>Consistency focused<br>Revision support</p>
+</div>
+<div class="price-card">
+<h3>Pro</h3>
+<div class="price">$150</div>
+<p>High-quality finish<br>Creative direction<br>Priority delivery</p>
+</div>
+</div>
 </section>
 
 <section class="cta">
-  <h2>Ready to upgrade your content?</h2>
-  <p>Let’s build edits that people actually watch.</p>
-  <a href="mailto:mereattar.2641@gmail.com">Work With FRAME</a>
-  <small>If the button doesn’t work, please email manually. mereattar.2641@gmail.com</small>
+<h2>Ready to upgrade your content?</h2>
+<p>Let’s build edits people actually watch.</p>
+<a href="mailto:mereattar.2641@gmail.com">Work With FRAME</a>
 </section>
 
-<footer>
-  © 2026 — FRAME Portfolio
-</footer>
+<footer>© 2026 — FRAME Portfolio</footer>
 
 <script>
-const testimonials = {
-  video: [
-    { text: "The Edit Is Amazing! more customers were coming in, defidently recommend working with frame", name: "Ahmed", role: "Mobile Brand" },
-    { text: "My videos finally look professional and Easy to understand", name: "Daniel R.", role: "YouTuber" },
-    { text: "FRAME understood the vision instantly. No back and forth.", name: "Omar S.", role: "Short-form Creator" }
-  ],
-  design: [
-    { text: "The designs were clean, modern, and easy to work with.", name: "Lina M.", role: "Coffee Shop" },
-    { text: "Our Brand started getting more views almost immediately.", name: "Imran", role: "Shirt Brand" },
-    { text: "Simple, clear visuals that actually represent the brand well.", name: "Sultan Photos", role: "Photography Brand" }
-  ]
-};
-
-const pricing = {
-  video: {
-    starter: "Clean, professional editing focused on clarity, pacing, and watchability.",
-    growth: "Stronger storytelling with improved flow, hooks, and visual polish.",
-    pro: "High-end editing with advanced pacing, effects, and priority-level attention."
-  },
-  design: {
-    starter: "Simple, clean designs that communicate clearly and look professional.",
-    growth: "Stronger visuals designed to improve clicks, consistency, and brand feel.",
-    pro: "Premium-level designs with refined details and brand-focused execution."
-  }
-};
-
-function renderTestimonials(type) {
-  const grid = document.getElementById("testimonialGrid");
-  grid.innerHTML = "";
-  testimonials[type].forEach(t => {
-    grid.innerHTML += `
-      <div class="testimonial">
-        “${t.text}”
-        <strong>— ${t.name}</strong>
-        <span>${t.role}</span>
-      </div>
-    `;
-  });
+function openTab(id,btn){
+document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+btn.classList.add('active');
 }
-
-function renderPricing(type) {
-  document.getElementById("starterDesc").innerHTML = pricing[type].starter;
-  document.getElementById("growthDesc").innerHTML = pricing[type].growth;
-  document.getElementById("proDesc").innerHTML = pricing[type].pro;
-}
-
-function openTab(tabId, btn) {
-  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById(tabId).classList.add('active');
-  btn.classList.add('active');
-  renderTestimonials(tabId);
-  renderPricing(tabId);
-}
-
-renderTestimonials("video");
-renderPricing("video");
 </script>
 
 </body>
