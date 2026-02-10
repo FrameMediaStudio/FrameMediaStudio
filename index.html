@@ -1,148 +1,129 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>FRAME — Creative Portfolio</title>
+<link rel="stylesheet" href="glass-services.css" />
 
-<style>
-:root{
---bg:#0f0f12;
---card:rgba(23,23,28,.78);
---border:rgba(255,255,255,.08);
---text:#e6e6eb;
---muted:#9a9aa3;
---accent1:#ff4d4d;
---accent2:#ff8a8a;
---accent3:#7aa2ff;
-}
-*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui,sans-serif}
-body{background:radial-gradient(circle at top,#15151b,var(--bg));color:var(--text)}
-section{padding:80px 20px;max-width:1100px;margin:auto}
-.gradient{background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+<section class="services">
 
-.hero{text-align:center;padding-top:100px}
-.hero h1{font-size:clamp(2.4rem,5vw,3.6rem);font-weight:800}
-.hero p{margin-top:18px;color:var(--muted)}
+  <h2 class="section-title">Our Creative Services</h2>
 
-.tab-buttons{display:flex;justify-content:center;gap:12px;margin-bottom:30px}
-.tab-btn{padding:12px 22px;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.03);color:var(--text);cursor:pointer;backdrop-filter:blur(10px)}
-.tab-btn.active{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#000;font-weight:700;border:none}
+  <!-- VIDEO EDITING -->
+  <div class="service-card glass">
+    <h3>🎬 Video Editing</h3>
+    <p class="service-desc">
+      High-retention, cinematic edits made to outperform basic freelance work.
+      Perfect for brands, creators, and short-form domination.
+    </p>
 
-.tab-content{display:none;background:var(--card);border:1px solid var(--border);backdrop-filter:blur(18px);border-radius:22px;padding:40px;animation:fadeUp .4s ease}
-.tab-content.active{display:block}
-.tab-content p{color:var(--muted);margin-top:14px;line-height:1.7}
+    <div class="packages">
 
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+      <div class="package">
+        <h4>Starter</h4>
+        <p class="price">$80 / video</p>
+        <ul>
+          <li>Clean cuts & pacing</li>
+          <li>Basic motion text</li>
+          <li>Sound effects</li>
+          <li>Short-form optimized</li>
+        </ul>
+      </div>
 
-.card{background:var(--card);border:1px solid var(--border);backdrop-filter:blur(16px);border-radius:22px;padding:28px}
+      <div class="package">
+        <h4>Pro</h4>
+        <p class="price">$150 / video</p>
+        <ul>
+          <li>Cinematic transitions</li>
+          <li>Advanced motion graphics</li>
+          <li>Color correction</li>
+          <li>Music & sound design</li>
+        </ul>
+      </div>
 
-.price{font-size:2rem;font-weight:800;margin:10px 0}
+      <div class="package highlight">
+        <h4>Custom (Recommended)</h4>
+        <p class="price">Flexible Pricing</p>
+        <ul>
+          <li>Fully tailored style</li>
+          <li>Retention-first editing</li>
+          <li>Platform-specific strategy</li>
+          <li>Quality & price discussed together</li>
+        </ul>
+      </div>
 
-.cta{text-align:center}
-.cta a{margin-top:20px;display:inline-block;padding:14px 30px;border-radius:16px;background:linear-gradient(90deg,var(--accent3),var(--accent2));color:#000;font-weight:800;text-decoration:none}
+    </div>
 
-footer{text-align:center;padding:30px;color:var(--muted);font-size:.85rem}
+    <div class="reviews">
+      <h4>Client Feedback</h4>
+      <div class="review glass">
+        <p>
+          “The edit genuinely outperformed what we had before.
+          It felt premium and intentional.”
+        </p>
+        <span>— Michael R.</span>
+      </div>
+      <div class="review glass">
+        <p>
+          “You can tell this wasn’t rushed. The pacing and visuals were next level.”
+        </p>
+        <span>— Alex M.</span>
+      </div>
+    </div>
+  </div>
 
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-</style>
-</head>
+  <!-- GRAPHIC DESIGN -->
+  <div class="service-card glass">
+    <h3>🎨 Graphic Design</h3>
+    <p class="service-desc">
+      Scroll-stopping visuals designed for branding, thumbnails, and marketing.
+      Clean, modern, and performance-focused.
+    </p>
 
-<body>
+    <div class="packages">
 
-<section class="hero">
-<h1>Turning ideas into <span class="gradient">high-impact content</span></h1>
-<p>Every editor starts with a timeline.<br><em>The difference is what you do after you press play.</em></p>
+      <div class="package">
+        <h4>Basic</h4>
+        <p class="price">$40 / design</p>
+        <ul>
+          <li>Clean layout</li>
+          <li>Brand colors</li>
+          <li>Social-ready</li>
+        </ul>
+      </div>
+
+      <div class="package">
+        <h4>Advanced</h4>
+        <p class="price">$90 / design</p>
+        <ul>
+          <li>3D / depth styling</li>
+          <li>High-contrast visuals</li>
+          <li>Optimized for CTR</li>
+        </ul>
+      </div>
+
+      <div class="package highlight">
+        <h4>Custom (Recommended)</h4>
+        <p class="price">Flexible Pricing</p>
+        <ul>
+          <li>Brand-specific visuals</li>
+          <li>Quality & budget discussion</li>
+          <li>Long-term design support</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="reviews">
+      <h4>Client Feedback</h4>
+      <div class="review glass">
+        <p>
+          “The designs looked expensive. Way better than what we had.”
+        </p>
+        <span>— Ryan K.</span>
+      </div>
+      <div class="review glass">
+        <p>
+          “Perfect balance between creativity and clarity.”
+        </p>
+        <span>— Daniel S.</span>
+      </div>
+    </div>
+  </div>
+
 </section>
-
-<section>
-<div class="tab-buttons">
-<button class="tab-btn active" onclick="openTab('video',this)">Video Editor</button>
-<button class="tab-btn" onclick="openTab('design',this)">Graphic Designer</button>
-</div>
-
-<div id="video" class="tab-content active">
-<h2 class="gradient">Video Editing</h2>
-<p><strong>2.5+ years of real editing experience</strong> working with short-form, reels, promos, and long-form content.</p>
-<p>I focus on pacing, clarity, and retention — edits that feel smooth, intentional, and watchable.</p>
-<p>Tools: Premiere Pro, After Effects, sound design, motion graphics.</p>
-</div>
-
-<div id="design" class="tab-content">
-<h2 class="gradient">Graphic Design</h2>
-<p>Thumbnails, social posts, and visuals designed to be clear, clickable, and consistent.</p>
-<p>Not overdesigned — just clean visuals that support the content and brand.</p>
-<p>Best for creators who want professional design without agency pricing.</p>
-</div>
-</section>
-
-<section>
-<h2 class="gradient" style="text-align:center;margin-bottom:40px">Client feedback</h2>
-<div class="grid" id="reviews"></div>
-</section>
-
-<section>
-<h2 class="gradient" style="text-align:center;margin-bottom:40px">Packages</h2>
-<div class="grid" id="pricing"></div>
-</section>
-
-<section class="cta">
-<h2>Let’s work together</h2>
-<p>Tell me what you need — we’ll figure out the best plan.</p>
-<a href="mailto:mereattar.2641@gmail.com">Contact FRAME</a>
-</section>
-
-<footer>© 2026 — FRAME Portfolio</footer>
-
-<script>
-const data={
-video:{
-reviews:[
-{t:"What I liked most was how natural the edit felt. Nothing forced, just clean and smooth.",n:"Ahmed K.",r:"Content Creator"},
-{t:"He actually listens. I didn’t have to explain things twice.",n:"Daniel R.",r:"YouTuber"},
-{t:"My reels started holding attention better after the edits.",n:"Omar S.",r:"Short-form Creator"}
-],
-pricing:[
-{n:"Starter",p:"$25",d:"Simple, clean edit\nGood pacing\nQuick delivery"},
-{n:"Growth",p:"$75",d:"Stronger hooks\nBetter flow & polish\nRevision support"},
-{n:"Pro",p:"$150",d:"High-quality finish\nCreative input\nPriority delivery"},
-{n:"Custom",p:"Flexible",d:"Quality & workload based\nDiscuss timeline & budget\nBest for long-term work"}
-]
-},
-design:{
-reviews:[
-{t:"The thumbnails were clear and didn’t look clickbaity. Exactly what I wanted.",n:"Lina M.",r:"Brand Owner"},
-{t:"Everything felt consistent across posts. Clean and professional.",n:"Chris T.",r:"Creator"},
-{t:"Good design without overdoing it.",n:"Sultan Photos",r:"Photography Brand"}
-],
-pricing:[
-{n:"Starter",p:"$20",d:"Single design\nClean layout\nBrand-safe"},
-{n:"Growth",p:"$60",d:"Multiple visuals\nConsistent style\nCTR-focused"},
-{n:"Pro",p:"$120",d:"High-quality set\nBrand-level polish\nPriority revisions"},
-{n:"Custom",p:"Flexible",d:"Based on volume & quality\nDiscuss goals & budget"}
-]
-}
-};
-
-function render(type){
-document.getElementById("reviews").innerHTML=data[type].reviews.map(r=>`
-<div class="card">“${r.t}”<br><strong>— ${r.n}</strong><br><small>${r.r}</small></div>
-`).join("");
-document.getElementById("pricing").innerHTML=data[type].pricing.map(p=>`
-<div class="card"><h3>${p.n}</h3><div class="price">${p.p}</div><p>${p.d.replaceAll("\n","<br>")}</p></div>
-`).join("");
-}
-
-function openTab(id,btn){
-document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
-btn.classList.add('active');
-document.getElementById(id).classList.add('active');
-render(id);
-}
-
-render("video");
-</script>
-
-</body>
-</html>
