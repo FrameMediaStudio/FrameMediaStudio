@@ -1,129 +1,151 @@
-<link rel="stylesheet" href="glass-services.css" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FRAME — Portfolio</title>
+</head>
 
-<section class="services">
+<body style="margin:0; font-family:Inter,system-ui,sans-serif; background:#0b0b0e; color:#eaeaf0;">
 
-  <h2 class="section-title">Our Creative Services</h2>
+<!-- HERO -->
+<div style="max-width:1100px; margin:auto; padding:80px 20px; text-align:center;">
+  <h1 style="font-size:42px; font-weight:800;">
+    Turning ideas into 
+    <span style="color:#ff4d4d;">high-impact content</span>
+  </h1>
+  <p style="color:#a1a1aa; margin-top:20px;">
+    Every editor starts with a timeline.<br>
+    <em>The difference is what happens next.</em>
+  </p>
+</div>
 
-  <!-- VIDEO EDITING -->
-  <div class="service-card glass">
-    <h3>🎬 Video Editing</h3>
-    <p class="service-desc">
-      High-retention, cinematic edits made to outperform basic freelance work.
-      Perfect for brands, creators, and short-form domination.
-    </p>
+<!-- TABS -->
+<div style="text-align:center; margin-bottom:50px;">
+  <button onclick="switchTab('video')" style="padding:12px 22px; margin:6px; border-radius:14px; border:none; font-weight:700; cursor:pointer; background:#ff4d4d; color:#000;">Video Editor</button>
+  <button onclick="switchTab('design')" style="padding:12px 22px; margin:6px; border-radius:14px; border:1px solid #333; background:#000; color:#fff; cursor:pointer;">Graphic Designer</button>
+</div>
 
-    <div class="packages">
+<!-- CLIENT FEEDBACK -->
+<div style="max-width:1100px; margin:auto; padding:20px;">
+  <h2 style="text-align:center; color:#ff4d4d;">Client feedback</h2>
 
-      <div class="package">
-        <h4>Starter</h4>
-        <p class="price">$80 / video</p>
-        <ul>
-          <li>Clean cuts & pacing</li>
-          <li>Basic motion text</li>
-          <li>Sound effects</li>
-          <li>Short-form optimized</li>
-        </ul>
-      </div>
-
-      <div class="package">
-        <h4>Pro</h4>
-        <p class="price">$150 / video</p>
-        <ul>
-          <li>Cinematic transitions</li>
-          <li>Advanced motion graphics</li>
-          <li>Color correction</li>
-          <li>Music & sound design</li>
-        </ul>
-      </div>
-
-      <div class="package highlight">
-        <h4>Custom (Recommended)</h4>
-        <p class="price">Flexible Pricing</p>
-        <ul>
-          <li>Fully tailored style</li>
-          <li>Retention-first editing</li>
-          <li>Platform-specific strategy</li>
-          <li>Quality & price discussed together</li>
-        </ul>
-      </div>
-
-    </div>
-
-    <div class="reviews">
-      <h4>Client Feedback</h4>
-      <div class="review glass">
-        <p>
-          “The edit genuinely outperformed what we had before.
-          It felt premium and intentional.”
-        </p>
-        <span>— Michael R.</span>
-      </div>
-      <div class="review glass">
-        <p>
-          “You can tell this wasn’t rushed. The pacing and visuals were next level.”
-        </p>
-        <span>— Alex M.</span>
-      </div>
-    </div>
+  <div id="testimonials" style="display:flex; gap:20px; flex-wrap:wrap; justify-content:center; margin-top:30px;">
   </div>
+</div>
 
-  <!-- GRAPHIC DESIGN -->
-  <div class="service-card glass">
-    <h3>🎨 Graphic Design</h3>
-    <p class="service-desc">
-      Scroll-stopping visuals designed for branding, thumbnails, and marketing.
-      Clean, modern, and performance-focused.
-    </p>
+<!-- PRICING -->
+<div style="max-width:1100px; margin:auto; padding:60px 20px;">
+  <h2 style="text-align:center; color:#ff4d4d;">Pricing</h2>
 
-    <div class="packages">
-
-      <div class="package">
-        <h4>Basic</h4>
-        <p class="price">$40 / design</p>
-        <ul>
-          <li>Clean layout</li>
-          <li>Brand colors</li>
-          <li>Social-ready</li>
-        </ul>
-      </div>
-
-      <div class="package">
-        <h4>Advanced</h4>
-        <p class="price">$90 / design</p>
-        <ul>
-          <li>3D / depth styling</li>
-          <li>High-contrast visuals</li>
-          <li>Optimized for CTR</li>
-        </ul>
-      </div>
-
-      <div class="package highlight">
-        <h4>Custom (Recommended)</h4>
-        <p class="price">Flexible Pricing</p>
-        <ul>
-          <li>Brand-specific visuals</li>
-          <li>Quality & budget discussion</li>
-          <li>Long-term design support</li>
-        </ul>
-      </div>
-
-    </div>
-
-    <div class="reviews">
-      <h4>Client Feedback</h4>
-      <div class="review glass">
-        <p>
-          “The designs looked expensive. Way better than what we had.”
-        </p>
-        <span>— Ryan K.</span>
-      </div>
-      <div class="review glass">
-        <p>
-          “Perfect balance between creativity and clarity.”
-        </p>
-        <span>— Daniel S.</span>
-      </div>
-    </div>
+  <div id="pricing" style="display:flex; gap:24px; flex-wrap:wrap; justify-content:center; margin-top:40px;">
   </div>
+</div>
 
-</section>
+<!-- CTA -->
+<div style="text-align:center; padding:60px 20px;">
+  <h2>Ready to work together?</h2>
+  <p style="color:#a1a1aa;">Let’s create content people actually watch.</p>
+  <a href="mailto:mereattar.2641@gmail.com"
+     style="display:inline-block; margin-top:20px; padding:14px 30px; border-radius:16px; background:#ff4d4d; color:#000; font-weight:800; text-decoration:none;">
+     Work With FRAME
+  </a>
+</div>
+
+<footer style="text-align:center; padding:30px; color:#a1a1aa;">
+  © 2026 — FRAME
+</footer>
+
+<script>
+const content = {
+  video: {
+    testimonials: [
+      { text: "The edits felt smooth and professional. The pacing was perfect.", name: "Ahmed", role: "Content Creator" },
+      { text: "Very clean work. Understood exactly what I wanted and delivered fast.", name: "Sultan", role: "Brand Owner" },
+      { text: "The final result looked way better than before.", name: "Daniel", role: "YouTuber" }
+    ],
+    pricing: [
+      {
+        title: "Video — Starter",
+        price: "$15–25",
+        desc: "Clean cuts, smooth pacing, polished short-form edits for Shorts, Reels and TikTok."
+      },
+      {
+        title: "Video — Growth",
+        price: "$40–70",
+        desc: "Advanced editing, stronger structure, hooks and storytelling for YouTube or brands."
+      },
+      {
+        title: "Custom Plan",
+        price: "Let’s Talk",
+        desc: "Flexible pricing based on quality, volume and long-term collaboration.",
+        highlight: true
+      }
+    ]
+  },
+
+  design: {
+    testimonials: [
+      { text: "The thumbnails instantly looked cleaner and more clickable.", name: "Chris", role: "Creator" },
+      { text: "Designs matched the brand perfectly without overdoing it.", name: "Lina", role: "Founder" },
+      { text: "Simple, modern and clear visuals.", name: "Yusuf", role: "Personal Brand" }
+    ],
+    pricing: [
+      {
+        title: "Design — Starter",
+        price: "$5–15",
+        desc: "Single thumbnails or visuals focused on clarity and clicks."
+      },
+      {
+        title: "Design — Growth",
+        price: "$25–40",
+        desc: "Multiple designs with consistent style and brand direction."
+      },
+      {
+        title: "Custom Plan",
+        price: "Let’s Talk",
+        desc: "Flexible design support for ongoing content or brands.",
+        highlight: true
+      }
+    ]
+  }
+};
+
+function render(tab) {
+  const t = document.getElementById("testimonials");
+  const p = document.getElementById("pricing");
+
+  t.innerHTML = "";
+  p.innerHTML = "";
+
+  content[tab].testimonials.forEach(x => {
+    t.innerHTML += `
+      <div style="max-width:300px; padding:20px; border-radius:18px; background:#141418;">
+        “${x.text}”
+        <div style="margin-top:12px; font-weight:700;">— ${x.name}</div>
+        <div style="color:#a1a1aa; font-size:13px;">${x.role}</div>
+      </div>
+    `;
+  });
+
+  content[tab].pricing.forEach(x => {
+    p.innerHTML += `
+      <div style="max-width:300px; padding:26px; border-radius:20px; background:${x.highlight ? '#1a1f2e' : '#141418'}; border:${x.highlight ? '2px solid #7aa2ff' : 'none'};">
+        ${x.highlight ? '<div style="font-size:12px; font-weight:700; color:#7aa2ff;">MOST FLEXIBLE</div>' : ''}
+        <h3>${x.title}</h3>
+        <div style="font-size:28px; font-weight:800; margin:10px 0;">${x.price}</div>
+        <p style="color:#a1a1aa;">${x.desc}</p>
+      </div>
+    `;
+  });
+}
+
+function switchTab(tab) {
+  render(tab);
+}
+
+render("video");
+</script>
+
+</body>
+</html>
