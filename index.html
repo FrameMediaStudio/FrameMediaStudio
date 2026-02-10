@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>FRAME — Personal Homepage</title>
+<title>FRAME — Ibraheem Raza</title>
 
 <style>
 :root {
-  --bg-dark: linear-gradient(135deg, #0f0f12, #1a1a22);
-  --video-bg: linear-gradient(135deg, #ff4d4d, #ff8a8a);
-  --design-bg: linear-gradient(135deg, #7aa2ff, #9db7ff);
+  --dark-bg: linear-gradient(135deg, #0b0b0e, #16161d);
+  --video-bg: linear-gradient(90deg, #1a0f12, #3a1418, #ff4d4d55);
+  --design-bg: linear-gradient(90deg, #0f1624, #182a4a, #7aa2ff55);
   --glass: rgba(255,255,255,0.12);
   --border: rgba(255,255,255,0.25);
 }
@@ -23,9 +23,9 @@
 
 body {
   min-height: 100vh;
-  background: var(--bg-dark);
+  background: var(--dark-bg);
   color: white;
-  transition: background 0.6s ease;
+  transition: background 0.7s ease;
 }
 
 .container {
@@ -38,14 +38,15 @@ body {
   display: flex;
   justify-content: center;
   gap: 12px;
-  margin-bottom: 50px;
+  margin-bottom: 45px;
+  flex-wrap: wrap;
 }
 
 .tab-btn {
   padding: 12px 22px;
   border-radius: 14px;
   border: 1px solid var(--border);
-  background: rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0.35);
   color: white;
   cursor: pointer;
   transition: 0.3s;
@@ -69,29 +70,44 @@ body {
 .glass {
   background: var(--glass);
   border: 1px solid var(--border);
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(18px);
   border-radius: 22px;
   padding: 28px;
 }
 
 h1 {
-  font-size: clamp(2.4rem, 5vw, 3.4rem);
-  margin-bottom: 10px;
+  font-size: clamp(2.3rem, 5vw, 3.4rem);
+  margin-bottom: 12px;
+}
+
+h3 {
+  margin-bottom: 8px;
 }
 
 p {
-  opacity: 0.85;
-  line-height: 1.6;
+  opacity: 0.88;
+  line-height: 1.7;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
-  gap: 24px;
-  margin-top: 30px;
+.horizontal-scroll {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scroll-snap-type: x mandatory;
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+.horizontal-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.25);
+  border-radius: 10px;
 }
 
 .card {
+  min-width: 260px;
+  scroll-snap-align: start;
   cursor: pointer;
   transition: transform 0.3s;
 }
@@ -108,12 +124,11 @@ p {
 
 .review {
   font-size: 0.95rem;
-  opacity: 0.9;
 }
 
 .review strong {
   display: block;
-  margin-top: 12px;
+  margin-top: 10px;
   font-weight: 600;
 }
 
@@ -121,6 +136,7 @@ p {
   display: flex;
   gap: 16px;
   margin-top: 20px;
+  flex-wrap: wrap;
 }
 
 .socials a {
@@ -145,39 +161,54 @@ p {
 <div class="container">
 
   <div class="tabs">
-    <button class="tab-btn active" onclick="openTab('about', 'dark', this)">About Me</button>
-    <button class="tab-btn" onclick="openTab('video', 'video', this)">Video Editor</button>
-    <button class="tab-btn" onclick="openTab('design', 'design', this)">Graphic Designer</button>
+    <button class="tab-btn active" onclick="openTab('about','dark',this)">About Me</button>
+    <button class="tab-btn" onclick="openTab('video','video',this)">Video Editor</button>
+    <button class="tab-btn" onclick="openTab('design','design',this)">Graphic Designer</button>
   </div>
 
   <!-- ABOUT -->
   <div id="about" class="section active glass">
-    <h1>Hey, I’m FRAME.</h1>
+    <h1>Ibraheem Raza</h1>
     <p>
-      I’m a video editor & graphic designer focused on clarity, motion, and retention.
-      I work with creators and brands who want their content to actually feel professional.
+      I’m a <strong>14-year-old video editor & graphic designer</strong> with over
+      <strong>2.5 years of hands-on experience</strong> working with creators and brands.
     </p>
 
-    <h3 style="margin-top:30px;">Socials</h3>
+    <p style="margin-top:14px;">
+      In video editing, I focus on <strong>pacing, clarity, and retention</strong> —
+      making sure videos feel smooth, intentional, and engaging from start to finish.
+    </p>
+
+    <p style="margin-top:14px;">
+      In graphic design, I create <strong>clean, readable, and high-impact visuals</strong>
+      that actually support the content — not distract from it.
+    </p>
+
+    <p style="margin-top:14px;">
+      My goal is simple: <strong>make your content look professional, feel intentional,
+      and perform better</strong> across platforms.
+    </p>
+
+    <h3 style="margin-top:28px;">Socials</h3>
     <div class="socials">
       <a href="https://youtube.com/@framestudiomedia" target="_blank">YouTube</a>
       <a href="https://www.linkedin.com/in/framestudiomedia" target="_blank">LinkedIn</a>
     </div>
   </div>
 
-  <!-- VIDEO EDITOR -->
+  <!-- VIDEO -->
   <div id="video" class="section">
-    <div class="grid">
+    <div class="horizontal-scroll">
       <div class="glass card" onclick="email('Video Editing — Starter')">
         <h3>Starter</h3>
         <div class="price">$25</div>
-        <p>Clean edits, strong pacing, platform-ready delivery.</p>
+        <p>Clean edits with strong pacing and clarity.</p>
       </div>
 
       <div class="glass card" onclick="email('Video Editing — Growth')">
         <h3>Growth</h3>
         <div class="price">$75</div>
-        <p>Retention-focused edits with improved flow and polish.</p>
+        <p>Retention-focused edits with improved flow.</p>
       </div>
 
       <div class="glass card" onclick="email('Video Editing — Pro')">
@@ -189,65 +220,65 @@ p {
       <div class="glass card" onclick="email()">
         <h3>Custom</h3>
         <div class="price">Let’s Talk</div>
-        <p>Flexible scope & pricing tailored to your needs.</p>
+        <p>Tailored to your needs.</p>
       </div>
     </div>
 
-    <div class="grid">
+    <div class="horizontal-scroll" style="margin-top:30px;">
       <div class="glass review">
-        “The edits felt natural and professional. Watch time improved.”
+        “Retention improved noticeably.”
         <strong>Ahmed</strong>
       </div>
       <div class="glass review">
-        “Exactly what I needed — no overediting.”
+        “Clean edits, no overdoing.”
         <strong>Daniel</strong>
       </div>
       <div class="glass review">
-        “Fast delivery and clean results.”
+        “Fast and professional.”
         <strong>Omar</strong>
       </div>
     </div>
   </div>
 
-  <!-- GRAPHIC DESIGN -->
+  <!-- DESIGN -->
   <div id="design" class="section">
-    <div class="grid">
+    <div class="horizontal-scroll">
       <div class="glass card" onclick="email('Graphic Design — Starter')">
         <h3>Starter</h3>
         <div class="price">$15</div>
-        <p>Simple, clean visuals with clarity.</p>
+        <p>Simple, clean visuals.</p>
       </div>
 
       <div class="glass card" onclick="email('Graphic Design — Growth')">
         <h3>Growth</h3>
         <div class="price">$45</div>
-        <p>Consistent designs built for engagement.</p>
+        <p>Consistent, high-quality designs.</p>
       </div>
 
       <div class="glass card" onclick="email('Graphic Design — Pro')">
         <h3>Pro</h3>
         <div class="price">$90</div>
-        <p>Brand-level visuals with polish.</p>
+        <p>Brand-level visuals.</p>
       </div>
 
       <div class="glass card" onclick="email()">
         <h3>Custom</h3>
         <div class="price">Let’s Talk</div>
-        <p>Custom scope & visuals.</p>
+        <p>Fully custom visuals.</p>
       </div>
     </div>
 
-    <div class="grid">
+    <div class="horizontal-scroll" style="margin-top:30px;">
       <div class="glass review">
-        “Our thumbnails instantly looked more clickable.”
+        “Thumbnails became more clickable.”
         <strong>Lina</strong>
       </div>
       <div class="glass review">
-        “Clean, modern, and consistent.”
+        “Very clean and modern.”
         <strong>Chris</strong>
       </div>
       <div class="glass review">
-        “Exactly matched our brand style.”
+        “Perfect brand match.”
         <strong>Sultan</strong>
       </div>
     </div>
@@ -264,18 +295,18 @@ function openTab(id, theme, btn) {
 
   if (theme === 'video') document.body.style.background = 'var(--video-bg)';
   else if (theme === 'design') document.body.style.background = 'var(--design-bg)';
-  else document.body.style.background = 'var(--bg-dark)';
+  else document.body.style.background = 'var(--dark-bg)';
 }
 
 function email(packageName) {
-  let email = "mereattar.2641@gmail.com";
+  const email = "mereattar.2641@gmail.com";
   if (!packageName) {
     window.location.href = `mailto:${email}`;
     return;
   }
-  let subject = encodeURIComponent(`Interested in ${packageName}`);
-  let body = encodeURIComponent(
-    `Hi FRAME,\n\nI’m interested in the ${packageName} package.\n\nHere’s what I’m looking for:\n\n—`
+  const subject = encodeURIComponent(`Interested in ${packageName}`);
+  const body = encodeURIComponent(
+    `Hi Ibraheem,\n\nI’m interested in the ${packageName}.\n\nHere’s what I’m looking for:\n\n—`
   );
   window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
 }
