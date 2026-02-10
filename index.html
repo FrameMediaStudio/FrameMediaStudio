@@ -6,13 +6,18 @@
   <title>FRAME — Portfolio</title>
 </head>
 
-<body style="margin:0; font-family:Inter,system-ui,sans-serif; background:#0b0b0e; color:#eaeaf0;">
+<body style="margin:0; font-family:Inter,system-ui,sans-serif; background:radial-gradient(circle at top, #141418, #09090c); color:#eaeaf0;">
 
 <!-- HERO -->
-<div style="max-width:1100px; margin:auto; padding:80px 20px; text-align:center;">
-  <h1 style="font-size:42px; font-weight:800;">
+<div style="max-width:1100px; margin:auto; padding:90px 20px; text-align:center;">
+  <h1 style="font-size:44px; font-weight:800;">
     Turning ideas into 
-    <span style="color:#ff4d4d;">high-impact content</span>
+    <span style="
+      background:linear-gradient(90deg,#ff4d4d,#ff8a8a);
+      -webkit-background-clip:text;
+      color:transparent;">
+      high-impact content
+    </span>
   </h1>
   <p style="color:#a1a1aa; margin-top:20px;">
     Every editor starts with a timeline.<br>
@@ -21,33 +26,73 @@
 </div>
 
 <!-- TABS -->
-<div style="text-align:center; margin-bottom:50px;">
-  <button onclick="switchTab('video')" style="padding:12px 22px; margin:6px; border-radius:14px; border:none; font-weight:700; cursor:pointer; background:#ff4d4d; color:#000;">Video Editor</button>
-  <button onclick="switchTab('design')" style="padding:12px 22px; margin:6px; border-radius:14px; border:1px solid #333; background:#000; color:#fff; cursor:pointer;">Graphic Designer</button>
+<div style="text-align:center; margin-bottom:60px;">
+  <button onclick="switchTab('video')" style="
+    padding:14px 26px;
+    margin:6px;
+    border-radius:16px;
+    border:none;
+    font-weight:800;
+    cursor:pointer;
+    background:linear-gradient(135deg,#ff4d4d,#ff8a8a);
+    color:#000;
+    box-shadow:0 10px 30px rgba(255,77,77,.35);
+  ">Video Editor</button>
+
+  <button onclick="switchTab('design')" style="
+    padding:14px 26px;
+    margin:6px;
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,.15);
+    background:rgba(255,255,255,.05);
+    color:#fff;
+    cursor:pointer;
+    backdrop-filter:blur(10px);
+  ">Graphic Designer</button>
 </div>
 
 <!-- CLIENT FEEDBACK -->
 <div style="max-width:1100px; margin:auto; padding:20px;">
   <h2 style="text-align:center; color:#ff4d4d;">Client feedback</h2>
 
-  <div id="testimonials" style="display:flex; gap:20px; flex-wrap:wrap; justify-content:center; margin-top:30px;">
+  <div id="testimonials" style="
+    display:flex;
+    gap:24px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-top:40px;">
   </div>
 </div>
 
 <!-- PRICING -->
-<div style="max-width:1100px; margin:auto; padding:60px 20px;">
+<div style="max-width:1100px; margin:auto; padding:80px 20px;">
   <h2 style="text-align:center; color:#ff4d4d;">Pricing</h2>
 
-  <div id="pricing" style="display:flex; gap:24px; flex-wrap:wrap; justify-content:center; margin-top:40px;">
+  <div id="pricing" style="
+    display:flex;
+    gap:26px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-top:50px;">
   </div>
 </div>
 
 <!-- CTA -->
-<div style="text-align:center; padding:60px 20px;">
+<div style="text-align:center; padding:80px 20px;">
   <h2>Ready to work together?</h2>
   <p style="color:#a1a1aa;">Let’s create content people actually watch.</p>
   <a href="mailto:mereattar.2641@gmail.com"
-     style="display:inline-block; margin-top:20px; padding:14px 30px; border-radius:16px; background:#ff4d4d; color:#000; font-weight:800; text-decoration:none;">
+     style="
+       display:inline-block;
+       margin-top:24px;
+       padding:16px 34px;
+       border-radius:18px;
+       background:linear-gradient(135deg,#7aa2ff,#ff8a8a);
+       color:#000;
+       font-weight:900;
+       text-decoration:none;
+       box-shadow:0 15px 40px rgba(122,162,255,.35);
+     ">
      Work With FRAME
   </a>
 </div>
@@ -68,17 +113,17 @@ const content = {
       {
         title: "Video — Starter",
         price: "$15–25",
-        desc: "Clean cuts, smooth pacing, polished short-form edits for Shorts, Reels and TikTok."
+        desc: "Clean cuts, smooth pacing and polished short-form edits."
       },
       {
         title: "Video — Growth",
         price: "$40–70",
-        desc: "Advanced editing, stronger structure, hooks and storytelling for YouTube or brands."
+        desc: "Advanced edits with stronger structure, hooks and storytelling."
       },
       {
         title: "Custom Plan",
         price: "Let’s Talk",
-        desc: "Flexible pricing based on quality, volume and long-term collaboration.",
+        desc: "Flexible pricing based on quality, volume and long-term work.",
         highlight: true
       }
     ]
@@ -99,12 +144,12 @@ const content = {
       {
         title: "Design — Growth",
         price: "$25–40",
-        desc: "Multiple designs with consistent style and brand direction."
+        desc: "Multiple designs with consistent brand direction."
       },
       {
         title: "Custom Plan",
         price: "Let’s Talk",
-        desc: "Flexible design support for ongoing content or brands.",
+        desc: "Flexible design support for ongoing content.",
         highlight: true
       }
     ]
@@ -120,9 +165,17 @@ function render(tab) {
 
   content[tab].testimonials.forEach(x => {
     t.innerHTML += `
-      <div style="max-width:300px; padding:20px; border-radius:18px; background:#141418;">
+      <div style="
+        max-width:300px;
+        padding:22px;
+        border-radius:20px;
+        background:rgba(255,255,255,.06);
+        backdrop-filter:blur(14px);
+        box-shadow:0 20px 50px rgba(0,0,0,.6);
+        border:1px solid rgba(255,255,255,.12);
+      ">
         “${x.text}”
-        <div style="margin-top:12px; font-weight:700;">— ${x.name}</div>
+        <div style="margin-top:14px; font-weight:800;">— ${x.name}</div>
         <div style="color:#a1a1aa; font-size:13px;">${x.role}</div>
       </div>
     `;
@@ -130,10 +183,22 @@ function render(tab) {
 
   content[tab].pricing.forEach(x => {
     p.innerHTML += `
-      <div style="max-width:300px; padding:26px; border-radius:20px; background:${x.highlight ? '#1a1f2e' : '#141418'}; border:${x.highlight ? '2px solid #7aa2ff' : 'none'};">
-        ${x.highlight ? '<div style="font-size:12px; font-weight:700; color:#7aa2ff;">MOST FLEXIBLE</div>' : ''}
+      <div style="
+        max-width:300px;
+        padding:28px;
+        border-radius:22px;
+        background:${x.highlight
+          ? 'linear-gradient(180deg,rgba(122,162,255,.18),rgba(255,255,255,.05))'
+          : 'rgba(255,255,255,.06)'};
+        backdrop-filter:blur(16px);
+        border:${x.highlight
+          ? '2px solid rgba(122,162,255,.8)'
+          : '1px solid rgba(255,255,255,.12)'};
+        box-shadow:0 25px 60px rgba(0,0,0,.7);
+      ">
+        ${x.highlight ? '<div style="font-size:12px;font-weight:900;color:#7aa2ff;">MOST FLEXIBLE</div>' : ''}
         <h3>${x.title}</h3>
-        <div style="font-size:28px; font-weight:800; margin:10px 0;">${x.price}</div>
+        <div style="font-size:30px; font-weight:900; margin:12px 0;">${x.price}</div>
         <p style="color:#a1a1aa;">${x.desc}</p>
       </div>
     `;
