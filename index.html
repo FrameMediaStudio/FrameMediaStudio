@@ -1,169 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FRAME — Portfolio</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FRAME — Personal Homepage</title>
+
+<style>
+:root {
+  --bg-dark: linear-gradient(135deg, #0f0f12, #1a1a22);
+  --video-bg: linear-gradient(135deg, #ff4d4d, #ff8a8a);
+  --design-bg: linear-gradient(135deg, #7aa2ff, #9db7ff);
+  --glass: rgba(255,255,255,0.12);
+  --border: rgba(255,255,255,0.25);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg-dark);
+  color: white;
+  transition: background 0.6s ease;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 60px 20px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 50px;
+}
+
+.tab-btn {
+  padding: 12px 22px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,0.3);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.tab-btn.active {
+  background: white;
+  color: black;
+  font-weight: 700;
+}
+
+.section {
+  display: none;
+  animation: fadeUp 0.6s ease;
+}
+
+.section.active {
+  display: block;
+}
+
+.glass {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(16px);
+  border-radius: 22px;
+  padding: 28px;
+}
+
+h1 {
+  font-size: clamp(2.4rem, 5vw, 3.4rem);
+  margin-bottom: 10px;
+}
+
+p {
+  opacity: 0.85;
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  gap: 24px;
+  margin-top: 30px;
+}
+
+.card {
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.price {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 10px 0;
+}
+
+.review {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.review strong {
+  display: block;
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+.socials {
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.socials a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  padding: 12px 18px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid var(--border);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
 </head>
 
-<body style="margin:0; font-family:Inter,system-ui,sans-serif; background:radial-gradient(circle at top, #141418, #09090c); color:#eaeaf0;">
+<body>
 
-<!-- HERO -->
-<div style="max-width:1100px; margin:auto; padding:90px 20px; text-align:center;">
-  <h1 style="font-size:44px; font-weight:800;">
-    Turning ideas into 
-    <span style="background:linear-gradient(90deg,#ff4d4d,#ff8a8a); -webkit-background-clip:text; color:transparent;">
-      high-impact content
-    </span>
-  </h1>
-  <p style="color:#a1a1aa; margin-top:20px;">
-    Every editor starts with a timeline.<br>
-    <em>The difference is what happens next.</em>
-  </p>
+<div class="container">
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="openTab('about', 'dark', this)">About Me</button>
+    <button class="tab-btn" onclick="openTab('video', 'video', this)">Video Editor</button>
+    <button class="tab-btn" onclick="openTab('design', 'design', this)">Graphic Designer</button>
+  </div>
+
+  <!-- ABOUT -->
+  <div id="about" class="section active glass">
+    <h1>Hey, I’m FRAME.</h1>
+    <p>
+      I’m a video editor & graphic designer focused on clarity, motion, and retention.
+      I work with creators and brands who want their content to actually feel professional.
+    </p>
+
+    <h3 style="margin-top:30px;">Socials</h3>
+    <div class="socials">
+      <a href="https://youtube.com/@framestudiomedia" target="_blank">YouTube</a>
+      <a href="https://www.linkedin.com/in/framestudiomedia" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+
+  <!-- VIDEO EDITOR -->
+  <div id="video" class="section">
+    <div class="grid">
+      <div class="glass card" onclick="email('Video Editing — Starter')">
+        <h3>Starter</h3>
+        <div class="price">$25</div>
+        <p>Clean edits, strong pacing, platform-ready delivery.</p>
+      </div>
+
+      <div class="glass card" onclick="email('Video Editing — Growth')">
+        <h3>Growth</h3>
+        <div class="price">$75</div>
+        <p>Retention-focused edits with improved flow and polish.</p>
+      </div>
+
+      <div class="glass card" onclick="email('Video Editing — Pro')">
+        <h3>Pro</h3>
+        <div class="price">$150</div>
+        <p>High-impact edits built for serious growth.</p>
+      </div>
+
+      <div class="glass card" onclick="email()">
+        <h3>Custom</h3>
+        <div class="price">Let’s Talk</div>
+        <p>Flexible scope & pricing tailored to your needs.</p>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="glass review">
+        “The edits felt natural and professional. Watch time improved.”
+        <strong>Ahmed</strong>
+      </div>
+      <div class="glass review">
+        “Exactly what I needed — no overediting.”
+        <strong>Daniel</strong>
+      </div>
+      <div class="glass review">
+        “Fast delivery and clean results.”
+        <strong>Omar</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- GRAPHIC DESIGN -->
+  <div id="design" class="section">
+    <div class="grid">
+      <div class="glass card" onclick="email('Graphic Design — Starter')">
+        <h3>Starter</h3>
+        <div class="price">$15</div>
+        <p>Simple, clean visuals with clarity.</p>
+      </div>
+
+      <div class="glass card" onclick="email('Graphic Design — Growth')">
+        <h3>Growth</h3>
+        <div class="price">$45</div>
+        <p>Consistent designs built for engagement.</p>
+      </div>
+
+      <div class="glass card" onclick="email('Graphic Design — Pro')">
+        <h3>Pro</h3>
+        <div class="price">$90</div>
+        <p>Brand-level visuals with polish.</p>
+      </div>
+
+      <div class="glass card" onclick="email()">
+        <h3>Custom</h3>
+        <div class="price">Let’s Talk</div>
+        <p>Custom scope & visuals.</p>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="glass review">
+        “Our thumbnails instantly looked more clickable.”
+        <strong>Lina</strong>
+      </div>
+      <div class="glass review">
+        “Clean, modern, and consistent.”
+        <strong>Chris</strong>
+      </div>
+      <div class="glass review">
+        “Exactly matched our brand style.”
+        <strong>Sultan</strong>
+      </div>
+    </div>
+  </div>
+
 </div>
-
-<!-- TABS -->
-<div style="text-align:center; margin-bottom:60px;">
-  <button id="videoBtn" onclick="switchTab('video')" style="
-    padding:14px 26px;
-    margin:6px;
-    border-radius:16px;
-    border:none;
-    font-weight:800;
-    cursor:pointer;
-    background:linear-gradient(135deg,#ff4d4d,#ff8a8a);
-    color:#000;
-    box-shadow:0 10px 30px rgba(255,77,77,.35);
-  ">Video Editor</button>
-
-  <button id="designBtn" onclick="switchTab('design')" style="
-    padding:14px 26px;
-    margin:6px;
-    border-radius:16px;
-    border:1px solid rgba(255,255,255,.15);
-    background:rgba(255,255,255,.05);
-    color:#fff;
-    cursor:pointer;
-    backdrop-filter:blur(10px);
-  ">Graphic Designer</button>
-</div>
-
-<!-- CLIENT FEEDBACK -->
-<div style="max-width:1100px; margin:auto; padding:20px;">
-  <h2 style="text-align:center; color:#ff4d4d;">Client feedback</h2>
-  <div id="testimonials" style="display:flex; gap:24px; flex-wrap:wrap; justify-content:center; margin-top:40px;"></div>
-</div>
-
-<!-- PRICING -->
-<div style="max-width:1100px; margin:auto; padding:80px 20px;">
-  <h2 style="text-align:center; color:#ff4d4d;">Pricing</h2>
-  <div id="pricing" style="display:flex; gap:26px; flex-wrap:wrap; justify-content:center; margin-top:50px;"></div>
-</div>
-
-<!-- CTA -->
-<div style="text-align:center; padding:80px 20px;">
-  <h2>Ready to work together?</h2>
-  <p style="color:#a1a1aa;">Let’s create content people actually watch.</p>
-  <a href="mailto:mereattar.2641@gmail.com"
-     style="display:inline-block; margin-top:24px; padding:16px 34px; border-radius:18px;
-            background:linear-gradient(135deg,#7aa2ff,#ff8a8a); color:#000; font-weight:900;
-            text-decoration:none; box-shadow:0 15px 40px rgba(122,162,255,.35);">
-     Work With FRAME
-  </a>
-</div>
-
-<footer style="text-align:center; padding:30px; color:#a1a1aa;">
-  © 2026 — FRAME
-</footer>
 
 <script>
-const content = {
-  video: {
-    testimonials: [
-      { text: "The edits felt smooth and professional. The pacing was perfect.", name: "Ahmed", role: "Content Creator" },
-      { text: "Very clean work. Understood exactly what I wanted and delivered fast.", name: "Sultan", role: "Brand Owner" },
-      { text: "The final result looked way better than before.", name: "Daniel", role: "YouTuber" }
-    ],
-    pricing: [
-      { title: "Video — Starter", price: "$15–25", desc: "Clean cuts, smooth pacing and polished short-form edits." },
-      { title: "Video — Growth", price: "$40–70", desc: "Advanced edits with stronger structure, hooks and storytelling." },
-      { title: "Custom Plan", price: "Let’s Talk", desc: "Flexible pricing based on quality, volume and long-term work.", highlight:true }
-    ]
-  },
-  design: {
-    testimonials: [
-      { text: "The thumbnails instantly looked cleaner and more clickable.", name: "Chris", role: "Creator" },
-      { text: "Designs matched the brand perfectly without overdoing it.", name: "Lina", role: "Founder" },
-      { text: "Simple, modern and clear visuals.", name: "Yusuf", role: "Personal Brand" }
-    ],
-    pricing: [
-      { title: "Design — Starter", price: "$5–15", desc: "Single thumbnails or visuals focused on clarity and clicks." },
-      { title: "Design — Growth", price: "$25–40", desc: "Multiple designs with consistent brand direction." },
-      { title: "Custom Plan", price: "Let’s Talk", desc: "Flexible design support for ongoing content.", highlight:true }
-    ]
-  }
-};
+function openTab(id, theme, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
 
-function switchTab(tab) {
-  // BUTTON GLOW TOGGLE
-  const videoBtn = document.getElementById("videoBtn");
-  const designBtn = document.getElementById("designBtn");
-
-  if (tab === "video") {
-    videoBtn.style.boxShadow = "0 10px 30px rgba(255,77,77,.35)";
-    videoBtn.style.background = "linear-gradient(135deg,#ff4d4d,#ff8a8a)";
-    videoBtn.style.color = "#000";
-
-    designBtn.style.boxShadow = "none";
-    designBtn.style.background = "rgba(255,255,255,.05)";
-    designBtn.style.color = "#fff";
-  } else {
-    designBtn.style.boxShadow = "0 10px 30px rgba(122,162,255,.35)";
-    designBtn.style.background = "linear-gradient(135deg,#7aa2ff,#9db7ff)";
-    designBtn.style.color = "#000";
-
-    videoBtn.style.boxShadow = "none";
-    videoBtn.style.background = "rgba(255,255,255,.05)";
-    videoBtn.style.color = "#fff";
-  }
-
-  render(tab);
+  if (theme === 'video') document.body.style.background = 'var(--video-bg)';
+  else if (theme === 'design') document.body.style.background = 'var(--design-bg)';
+  else document.body.style.background = 'var(--bg-dark)';
 }
 
-function render(tab) {
-  const t = document.getElementById("testimonials");
-  const p = document.getElementById("pricing");
-  t.innerHTML = "";
-  p.innerHTML = "";
-
-  content[tab].testimonials.forEach(x => {
-    t.innerHTML += `
-      <div style="max-width:300px; padding:22px; border-radius:20px;
-                  background:rgba(255,255,255,.06); backdrop-filter:blur(14px);
-                  box-shadow:0 20px 50px rgba(0,0,0,.6);
-                  border:1px solid rgba(255,255,255,.12);">
-        “${x.text}”
-        <div style="margin-top:14px; font-weight:800;">— ${x.name}</div>
-        <div style="color:#a1a1aa; font-size:13px;">${x.role}</div>
-      </div>`;
-  });
-
-  content[tab].pricing.forEach(x => {
-    p.innerHTML += `
-      <div style="max-width:300px; padding:28px; border-radius:22px;
-                  background:${x.highlight ? 'linear-gradient(180deg,rgba(122,162,255,.18),rgba(255,255,255,.05))' : 'rgba(255,255,255,.06)'};
-                  backdrop-filter:blur(16px);
-                  border:${x.highlight ? '2px solid rgba(122,162,255,.8)' : '1px solid rgba(255,255,255,.12)'};
-                  box-shadow:0 25px 60px rgba(0,0,0,.7);">
-        ${x.highlight ? '<div style="font-size:12px;font-weight:900;color:#7aa2ff;">MOST FLEXIBLE</div>' : ''}
-        <h3>${x.title}</h3>
-        <div style="font-size:30px;font-weight:900;margin:12px 0;">${x.price}</div>
-        <p style="color:#a1a1aa;">${x.desc}</p>
-      </div>`;
-  });
+function email(packageName) {
+  let email = "mereattar.2641@gmail.com";
+  if (!packageName) {
+    window.location.href = `mailto:${email}`;
+    return;
+  }
+  let subject = encodeURIComponent(`Interested in ${packageName}`);
+  let body = encodeURIComponent(
+    `Hi FRAME,\n\nI’m interested in the ${packageName} package.\n\nHere’s what I’m looking for:\n\n—`
+  );
+  window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
 }
-
-render("video");
 </script>
 
 </body>
