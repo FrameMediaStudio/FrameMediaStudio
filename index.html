@@ -1,314 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FRAME — Ibraheem Raza</title>
 
 <style>
 :root {
-  --dark-bg: linear-gradient(135deg, #0b0b0e, #16161d);
-  --video-bg: linear-gradient(90deg, #1a0f12, #3a1418, #ff4d4d55);
-  --design-bg: linear-gradient(90deg, #0f1624, #182a4a, #7aa2ff55);
-  --glass: rgba(255,255,255,0.12);
-  --border: rgba(255,255,255,0.25);
+  --glass-bg: rgba(255,255,255,0.08);
+  --glass-border: rgba(255,255,255,0.15);
+  --text: #eaeaf0;
+  --muted: #b0b0c0;
 }
 
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
   font-family: Inter, system-ui, sans-serif;
 }
 
 body {
+  margin: 0;
   min-height: 100vh;
-  background: var(--dark-bg);
-  color: white;
-  transition: background 0.7s ease;
+  background: linear-gradient(135deg, #0b0b0e, #15151c);
+  color: var(--text);
+  transition: background 0.6s ease;
 }
 
-.container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 60px 20px;
-}
-
-.tabs {
+header {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  margin-bottom: 45px;
+  gap: 14px;
+  padding: 30px 20px;
   flex-wrap: wrap;
 }
 
 .tab-btn {
   padding: 12px 22px;
   border-radius: 14px;
-  border: 1px solid var(--border);
-  background: rgba(0,0,0,0.35);
-  color: white;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  color: var(--text);
   cursor: pointer;
+  backdrop-filter: blur(12px);
   transition: 0.3s;
 }
 
 .tab-btn.active {
-  background: white;
-  color: black;
+  box-shadow: 0 0 25px rgba(255,255,255,0.25);
   font-weight: 700;
 }
 
-.section {
-  display: none;
-  animation: fadeUp 0.6s ease;
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
 }
 
-.section.active {
+.tab {
+  display: none;
+}
+
+.tab.active {
   display: block;
 }
 
 .glass {
-  background: var(--glass);
-  border: 1px solid var(--border);
-  backdrop-filter: blur(18px);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   border-radius: 22px;
   padding: 28px;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.35);
 }
 
-h1 {
-  font-size: clamp(2.3rem, 5vw, 3.4rem);
-  margin-bottom: 12px;
-}
-
-h3 {
-  margin-bottom: 8px;
+h1, h2 {
+  margin-top: 0;
 }
 
 p {
-  opacity: 0.88;
+  color: var(--muted);
   line-height: 1.7;
 }
 
-.horizontal-scroll {
+.packages {
   display: flex;
   gap: 20px;
-  overflow-x: auto;
-  padding-bottom: 10px;
-  scroll-snap-type: x mandatory;
+  flex-wrap: wrap;
 }
 
-.horizontal-scroll::-webkit-scrollbar {
-  height: 6px;
-}
-.horizontal-scroll::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.25);
-  border-radius: 10px;
-}
-
-.card {
+.package {
+  flex: 1;
   min-width: 260px;
-  scroll-snap-align: start;
   cursor: pointer;
   transition: transform 0.3s;
 }
 
-.card:hover {
+.package:hover {
   transform: translateY(-6px);
 }
 
 .price {
-  font-size: 2rem;
+  font-size: 28px;
   font-weight: 800;
-  margin: 10px 0;
+  margin: 12px 0;
+}
+
+.reviews {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  gap: 20px;
 }
 
 .review {
   font-size: 0.95rem;
 }
 
-.review strong {
-  display: block;
-  margin-top: 10px;
-  font-weight: 600;
-}
-
 .socials {
   display: flex;
   gap: 16px;
-  margin-top: 20px;
-  flex-wrap: wrap;
+  margin-top: 14px;
 }
 
 .socials a {
   text-decoration: none;
   color: white;
-  font-weight: 600;
-  padding: 12px 18px;
-  border-radius: 14px;
-  background: rgba(255,255,255,0.15);
-  border: 1px solid var(--border);
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid var(--glass-border);
 }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+/* GRADIENT THEMES */
+.video-theme {
+  background: linear-gradient(
+    135deg,
+    #1a0f12 0%,
+    #2a1418 35%,
+    #ff4d4d 65%,
+    #ff8a8a 100%
+  );
+  background-size: 200% 200%;
+  animation: gradientMove 10s ease infinite;
+}
+
+.design-theme {
+  background: linear-gradient(
+    135deg,
+    #0e1220 0%,
+    #141a2e 35%,
+    #7aa2ff 65%,
+    #9db7ff 100%
+  );
+  background-size: 200% 200%;
+  animation: gradientMove 10s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<header>
+  <button class="tab-btn active" onclick="openTab('about', this)">About Me</button>
+  <button class="tab-btn" onclick="openTab('video', this)">Video Editor</button>
+  <button class="tab-btn" onclick="openTab('design', this)">Graphic Designer</button>
+</header>
 
-  <div class="tabs">
-    <button class="tab-btn active" onclick="openTab('about','dark',this)">About Me</button>
-    <button class="tab-btn" onclick="openTab('video','video',this)">Video Editor</button>
-    <button class="tab-btn" onclick="openTab('design','design',this)">Graphic Designer</button>
-  </div>
+<main>
 
-  <!-- ABOUT -->
-  <div id="about" class="section active glass">
-    <h1>Ibraheem Raza</h1>
+<!-- ABOUT -->
+<section id="about" class="tab active">
+  <div class="glass">
+    <h1>I’m Ibraheem Raza</h1>
+    <p><strong>Age:</strong> 14 · <strong>Experience:</strong> 2.5+ years</p>
+
     <p>
-      I’m a <strong>14-year-old video editor & graphic designer</strong> with over
-      <strong>2.5 years of hands-on experience</strong> working with creators and brands.
+      I help creators and brands turn ideas into clean, engaging visuals.
+      I focus on clarity, pacing, and making content feel intentional — not random.
     </p>
 
-    <p style="margin-top:14px;">
-      In video editing, I focus on <strong>pacing, clarity, and retention</strong> —
-      making sure videos feel smooth, intentional, and engaging from start to finish.
+    <p>
+      <strong>Video Editing:</strong> retention-focused cuts, smooth motion, strong hooks,
+      and platform-optimized delivery.
     </p>
 
-    <p style="margin-top:14px;">
-      In graphic design, I create <strong>clean, readable, and high-impact visuals</strong>
-      that actually support the content — not distract from it.
+    <p>
+      <strong>Graphic Design:</strong> high-CTR thumbnails, visual hierarchy,
+      and designs that support content performance.
     </p>
 
-    <p style="margin-top:14px;">
-      My goal is simple: <strong>make your content look professional, feel intentional,
-      and perform better</strong> across platforms.
-    </p>
-
-    <h3 style="margin-top:28px;">Socials</h3>
+    <h3>Socials</h3>
     <div class="socials">
       <a href="https://youtube.com/@framestudiomedia" target="_blank">YouTube</a>
       <a href="https://www.linkedin.com/in/framestudiomedia" target="_blank">LinkedIn</a>
     </div>
   </div>
+</section>
 
-  <!-- VIDEO -->
-  <div id="video" class="section">
-    <div class="horizontal-scroll">
-      <div class="glass card" onclick="email('Video Editing — Starter')">
+<!-- VIDEO -->
+<section id="video" class="tab">
+  <div class="glass video-theme">
+    <h2>Video Editing Packages</h2>
+
+    <div class="packages">
+      <div class="glass package" onclick="emailPkg('Video Starter')">
         <h3>Starter</h3>
         <div class="price">$25</div>
-        <p>Clean edits with strong pacing and clarity.</p>
+        <p>Clean edits, smooth pacing, platform-ready delivery.</p>
       </div>
 
-      <div class="glass card" onclick="email('Video Editing — Growth')">
+      <div class="glass package" onclick="emailPkg('Video Growth')">
         <h3>Growth</h3>
         <div class="price">$75</div>
-        <p>Retention-focused edits with improved flow.</p>
+        <p>Advanced pacing, strong hooks, higher retention.</p>
       </div>
 
-      <div class="glass card" onclick="email('Video Editing — Pro')">
-        <h3>Pro</h3>
-        <div class="price">$150</div>
-        <p>High-impact edits built for serious growth.</p>
-      </div>
-
-      <div class="glass card" onclick="email()">
+      <div class="glass package" onclick="emailCustom()">
         <h3>Custom</h3>
         <div class="price">Let’s Talk</div>
-        <p>Tailored to your needs.</p>
+        <p>Tailored workflow, flexible pricing.</p>
       </div>
     </div>
 
-    <div class="horizontal-scroll" style="margin-top:30px;">
-      <div class="glass review">
-        “Retention improved noticeably.”
-        <strong>Ahmed</strong>
-      </div>
-      <div class="glass review">
-        “Clean edits, no overdoing.”
-        <strong>Daniel</strong>
-      </div>
-      <div class="glass review">
-        “Fast and professional.”
-        <strong>Omar</strong>
-      </div>
+    <div class="reviews">
+      <div class="glass review">“The edits felt natural and professional.” — Ahmed</div>
+      <div class="glass review">“Retention noticeably improved.” — Daniel</div>
+      <div class="glass review">“Exactly what I needed.” — Omar</div>
     </div>
   </div>
+</section>
 
-  <!-- DESIGN -->
-  <div id="design" class="section">
-    <div class="horizontal-scroll">
-      <div class="glass card" onclick="email('Graphic Design — Starter')">
+<!-- DESIGN -->
+<section id="design" class="tab">
+  <div class="glass design-theme">
+    <h2>Graphic Design Packages</h2>
+
+    <div class="packages">
+      <div class="glass package" onclick="emailPkg('Design Starter')">
         <h3>Starter</h3>
-        <div class="price">$15</div>
-        <p>Simple, clean visuals.</p>
+        <div class="price">$20</div>
+        <p>Clean, readable, brand-safe designs.</p>
       </div>
 
-      <div class="glass card" onclick="email('Graphic Design — Growth')">
+      <div class="glass package" onclick="emailPkg('Design Growth')">
         <h3>Growth</h3>
-        <div class="price">$45</div>
-        <p>Consistent, high-quality designs.</p>
+        <div class="price">$60</div>
+        <p>High-CTR visuals with consistency.</p>
       </div>
 
-      <div class="glass card" onclick="email('Graphic Design — Pro')">
-        <h3>Pro</h3>
-        <div class="price">$90</div>
-        <p>Brand-level visuals.</p>
-      </div>
-
-      <div class="glass card" onclick="email()">
+      <div class="glass package" onclick="emailCustom()">
         <h3>Custom</h3>
         <div class="price">Let’s Talk</div>
-        <p>Fully custom visuals.</p>
+        <p>Custom visuals and pricing.</p>
       </div>
     </div>
 
-    <div class="horizontal-scroll" style="margin-top:30px;">
-      <div class="glass review">
-        “Thumbnails became more clickable.”
-        <strong>Lina</strong>
-      </div>
-      <div class="glass review">
-        “Very clean and modern.”
-        <strong>Chris</strong>
-      </div>
-      <div class="glass review">
-        “Perfect brand match.”
-        <strong>Sultan</strong>
-      </div>
+    <div class="reviews">
+      <div class="glass review">“Our thumbnails get more clicks now.” — Lina</div>
+      <div class="glass review">“Very clean and modern.” — Chris</div>
+      <div class="glass review">“Matched our brand perfectly.” — Sultan</div>
     </div>
   </div>
+</section>
 
-</div>
+</main>
 
 <script>
-function openTab(id, theme, btn) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+function openTab(id, btn) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   btn.classList.add('active');
-
-  if (theme === 'video') document.body.style.background = 'var(--video-bg)';
-  else if (theme === 'design') document.body.style.background = 'var(--design-bg)';
-  else document.body.style.background = 'var(--dark-bg)';
 }
 
-function email(packageName) {
-  const email = "mereattar.2641@gmail.com";
-  if (!packageName) {
-    window.location.href = `mailto:${email}`;
-    return;
-  }
-  const subject = encodeURIComponent(`Interested in ${packageName}`);
-  const body = encodeURIComponent(
-    `Hi Ibraheem,\n\nI’m interested in the ${packageName}.\n\nHere’s what I’m looking for:\n\n—`
-  );
-  window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+function emailPkg(pkg) {
+  window.location.href =
+    `mailto:mereattar.2641@gmail.com?subject=${encodeURIComponent(pkg)}&body=Hi,%0A%0AI’m interested in the ${pkg} package.%0AHere’s what I need:%0A`;
+}
+
+function emailCustom() {
+  window.location.href = "mailto:mereattar.2641@gmail.com";
 }
 </script>
 
